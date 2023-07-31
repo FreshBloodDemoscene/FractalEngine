@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\main.cpp(4,1): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
+  FractalEngine.vcxproj -> C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\FractalEngine.exe
