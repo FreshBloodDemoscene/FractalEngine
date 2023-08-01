@@ -28,6 +28,14 @@ Window::Window(const glm::ivec2& size)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
 
 	m_window = glfwCreateWindow(size.x, size.y, "Fractal Engine", NULL, NULL);
+	iconPixels = stbi_load("Logo_Fractal_Engine.png", &iconWidth, &iconHeight, &iconChannels, 4);
+	
+	GLFWimage windowIcon[1];
+	windowIcon[0].width = iconWidth;
+	windowIcon[0].height = iconHeight;
+	windowIcon[0].pixels = iconPixels;
+
+	glfwSetWindowIcon(m_window, 1, windowIcon);
 	glfwSetWindowUserPointer(m_window, this);
 
 	if (!m_window)
