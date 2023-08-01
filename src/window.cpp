@@ -15,7 +15,7 @@
 # pragma comment(lib, "glfw3-s.lib")
 #endif
 
-Window::Window(const glm::ivec2& size /* = glm::ivec2(kDEFAULT_WIDTH, kDEFAULT_HEIGHT) */)
+Window::Window(const glm::ivec2& size)
 	: m_size(size)
 {
 	if (!glfwInit())

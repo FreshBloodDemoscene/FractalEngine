@@ -17,18 +17,18 @@ void EditorWindow::ImGuiInitialisation(GLFWwindow* window)
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	ImGui::StyleColorsDark();
+	ImGui::StyleColorsLight();
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 460");
 }
 
-void EditorWindow::EditorWindowSetUp()
+void EditorWindow::EditorWindowSetUp(Renderer& renderer)
 {
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 
-	EditorWindow::EditorGUIsetUp();
+	EditorWindow::EditorGUIsetUp(renderer);
 }
 
 void EditorWindow::EditorRendering()
@@ -37,14 +37,21 @@ void EditorWindow::EditorRendering()
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void EditorWindow::EditorGUIsetUp()
+void EditorWindow::EditorGUIsetUp(Renderer& renderer)
 {
+
 	if(ImGui::Begin("Fractal Editor"))
 	{
-		if(ImGui::Button("Open File"))
+		ImGui::BeginMainMenuBar();
+		if (ImGui::BeginMenu("File"))
 		{
-			std::cout << "thas is Hello World" << std::endl;
+			if(ImGui::MenuItem("Open"))
+			{
+				renderer.ReadAndWrite_Shader();
+			}
+			ImGui::EndMenu();
 		}
+		ImGui::EndMainMenuBar();
 	}
 	ImGui::End();
 }

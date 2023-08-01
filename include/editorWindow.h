@@ -19,8 +19,9 @@ public:
 	~EditorWindow();
 
 	void ImGuiInitialisation(GLFWwindow* window);
-	void EditorWindowSetUp();
+	void EditorWindowSetUp(Renderer& renderer);
 	void EditorRendering();
-	void EditorGUIsetUp();
+	void EditorGUIsetUp(Renderer& renderer);
+
 };
 #endif	//__FRACTAL_ENGINE_EDITORWINDOW_H__
