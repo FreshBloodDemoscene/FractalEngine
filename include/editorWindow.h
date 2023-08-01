@@ -6,6 +6,8 @@
 #include <imgui/imgui_impl_opengl3.h>
 
 #include <iostream>
+#include <renderer.h>
+#include <window.h>
 
 #define GLEW_STATIC
 #include <GL/glew.h>

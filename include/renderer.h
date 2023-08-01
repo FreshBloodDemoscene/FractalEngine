@@ -23,7 +23,7 @@ public:
 	std::string m_vertexShader = "";
 	std::string m_fragmentShader = "";
 
-	void ReadAndWrite_Shader		(const char* vertexPath, const char* fragmentPath);
+	void ReadAndWrite_Shader		();
 	static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
 
 	explicit Renderer				(const Window& window);

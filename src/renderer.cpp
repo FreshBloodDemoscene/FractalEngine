@@ -42,7 +42,7 @@ Renderer::Renderer(const Window& window)
 
 
 	//READ SHADER FILE AND LOAD IT IN SHADER RENDERER
-	ReadAndWrite_Shader("ShaderFiles/Shader.vs", "ShaderFiles/Shader.fs");
+	ReadAndWrite_Shader();
 	m_shader = CreateShader(m_vertexShader, m_fragmentShader);
 	glUseProgram(m_shader);
 
@@ -114,8 +114,11 @@ unsigned int Renderer::CompileShader(unsigned int type, const std::string& sourc
 	return id;
 }
 
-void Renderer::ReadAndWrite_Shader(const char* vertexPath, const char* fragmentPath)
+void Renderer::ReadAndWrite_Shader()
 {
+	auto vertexPath = pfd::open_file("Select VertexShader", ".", { "VertexShaderFiles", "*.vs" }).result();
+	auto shaderPath = pfd::open_file("Select FragmentShader", ".", { "FragmentShaderFiles", "*.fs" }).result();
+
 	std::string vertexCode;
 	std::string fragmentCode;
 
@@ -126,8 +129,15 @@ void Renderer::ReadAndWrite_Shader(const char* vertexPath, const char* fragmentP
 	fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	try
 	{
-		vShaderFile.open(vertexPath);  
-		fShaderFile.open(fragmentPath);
+		for (auto const &filename : vertexPath)
+		{
+			vShaderFile.open(filename);
+		}
+		for (auto const& filename : shaderPath)
+		{
+			fShaderFile.open(filename);
+
+		}
 		std::stringstream vShaderStream, fShaderStream;
 
 		vShaderStream << vShaderFile.rdbuf();

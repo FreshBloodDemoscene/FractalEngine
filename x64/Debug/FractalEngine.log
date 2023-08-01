@@ -1,8 +1,5 @@
 ﻿  editorWindow.cpp
-  file.cpp
   main.cpp
-  renderer.cpp
-C:\Users\qriga\Documents\GitHub\FractalEngine\src\renderer.cpp(61,18): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
   Génération de code en cours...
 sync-s-d.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj) : warning LNK4099: PDB 'sync_ccpdb.pdb' n'a pu être trouvé avec 'sync-s-d.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj)' ou sur 'C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\sync_ccpdb.pdb' ; l'objet sera lié sans informations de débogage
 sync-s-d.lib(track-c-4b658b68bf604860e37191ad74e662f5.obj) : warning LNK4099: PDB 'sync_ccpdb.pdb' n'a pu être trouvé avec 'sync-s-d.lib(track-c-4b658b68bf604860e37191ad74e662f5.obj)' ou sur 'C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\sync_ccpdb.pdb' ; l'objet sera lié sans informations de débogage

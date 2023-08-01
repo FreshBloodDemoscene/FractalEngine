@@ -44,7 +44,6 @@ void EditorWindow::EditorGUIsetUp()
 		if(ImGui::Button("Open File"))
 		{
 			std::cout << "thas is Hello World" << std::endl;
-			//jaaj c'est quoi cette syntaxe ? btw OpenFile();
 		}
 	}
 	ImGui::End();
