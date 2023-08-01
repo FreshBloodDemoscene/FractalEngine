@@ -1,1 +1,15 @@
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\editorWindow.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\editorWindow.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\file.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\file.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\imgui\imgui.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\imgui.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\imgui\imgui_demo.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\imgui_demo.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\imgui\imgui_draw.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\imgui_draw.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\imgui\imgui_impl_glfw.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\imgui_impl_glfw.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\imgui\imgui_impl_opengl3.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\imgui_impl_opengl3.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\imgui\imgui_tables.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\imgui_tables.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\imgui\imgui_widgets.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\imgui_widgets.obj
 C:\Users\qriga\Documents\GitHub\FractalEngine\src\main.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\main.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\renderer.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\renderer.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\soundTrack.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\soundTrack.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\synctracker.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\synctracker.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\textloader.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\textloader.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\window.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\window.obj
