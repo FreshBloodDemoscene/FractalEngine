@@ -17,13 +17,6 @@ int main(int argc, char** argv)
 	SoundTrack soundtrack;
 	Renderer renderer(window);
 
-	//auto music_selection = pfd::open_file("Select Music", ".", {"Music Files", "*.wav *.mp3"}).result();
-	//
-	//for (auto const &filename : music_selection)
-	//{
-	//	soundtrack.PlayMusic(filename);
-	//}
-
 	editorWindow.ImGuiInitialisation(window.m_window);
 
 	do

@@ -23,5 +23,10 @@ public:
 	void EditorRendering();
 	void EditorGUIsetUp(Renderer& renderer);
 
+	void MainToolBar(Renderer& renderer);
+
+	int ThemeOfEditor = 1;
+
 };
+
 #endif	//__FRACTAL_ENGINE_EDITORWINDOW_H__

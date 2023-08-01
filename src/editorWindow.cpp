@@ -1,5 +1,8 @@
 #include <editorWindow.h>
 
+#define SET_LIGHT_MODE		ImGui::StyleColorsLight();
+#define SET_DARK_MODE		ImGui::StyleColorsDark();
+
 EditorWindow::EditorWindow() 
 {
 
@@ -17,7 +20,7 @@ void EditorWindow::ImGuiInitialisation(GLFWwindow* window)
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	ImGui::StyleColorsLight();
+	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 460");
 }
@@ -38,20 +41,47 @@ void EditorWindow::EditorRendering()
 }
 
 void EditorWindow::EditorGUIsetUp(Renderer& renderer)
-{
+{		
+	MainToolBar(renderer);
+}
 
-	if(ImGui::Begin("Fractal Editor"))
+void EditorWindow::MainToolBar(Renderer& renderer)
+{
+	switch (ThemeOfEditor)
 	{
-		ImGui::BeginMainMenuBar();
-		if (ImGui::BeginMenu("File"))
+	case 0:
+		SET_LIGHT_MODE;
+		break;
+	case 1:
+		SET_DARK_MODE;
+		break;
+	}
+
+	ImGui::BeginMainMenuBar();
+
+	if (ImGui::BeginMenu("File"))
+	{
+		if (ImGui::MenuItem("Open"))
 		{
-			if(ImGui::MenuItem("Open"))
+			renderer.ReadAndWrite_Shader();
+		}
+		ImGui::EndMenu();
+	}
+	if (ImGui::BeginMenu("Settings"))
+	{
+		if (ImGui::BeginMenu("Theme"))
+		{
+			if (ImGui::MenuItem("Light"))
 			{
-				renderer.ReadAndWrite_Shader();
+				ThemeOfEditor = 0;
+			}
+			if (ImGui::MenuItem("Dark"))
+			{
+				ThemeOfEditor = 1;
 			}
 			ImGui::EndMenu();
 		}
-		ImGui::EndMainMenuBar();
+		ImGui::EndMenu();
 	}
-	ImGui::End();
+	ImGui::EndMainMenuBar();
 }
