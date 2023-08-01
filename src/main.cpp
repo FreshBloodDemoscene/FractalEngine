@@ -4,8 +4,7 @@
 #include <window.h>
 #include <renderer.h>
 #include <file.h>
-
-#include <ShObjIdl.h>
+#include <soundTrack.h>
 
 #define GLEW_STATIC
 #include <GL/glew.h>
@@ -15,7 +14,7 @@ int main(int argc, char** argv)
 	File file;
 	Window window;
 	EditorWindow editorWindow;
-
+	SoundTrack soundtrack;
 	Renderer renderer(window);
 
 	editorWindow.ImGuiInitialisation(window.m_window);
@@ -29,11 +28,6 @@ int main(int argc, char** argv)
 		editorWindow.EditorRendering();
 
 	} while (window.SwapBuffers());
-	
-	ImGui_ImplOpenGL3_Shutdown();
-	ImGui_ImplGlfw_Shutdown();
-	ImGui::DestroyContext();
-
 
 	return 0;
 }

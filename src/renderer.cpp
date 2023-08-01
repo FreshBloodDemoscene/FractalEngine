@@ -126,7 +126,7 @@ void Renderer::ReadAndWrite_Shader(const char* vertexPath, const char* fragmentP
 	fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	try
 	{
-		vShaderFile.open(vertexPath);
+		vShaderFile.open(vertexPath);  
 		fShaderFile.open(fragmentPath);
 		std::stringstream vShaderStream, fShaderStream;
 

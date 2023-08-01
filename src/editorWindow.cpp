@@ -7,9 +7,9 @@ EditorWindow::EditorWindow()
 
 EditorWindow::~EditorWindow()
 {
-	//ImGui_ImplOpenGL3_Shutdown();
-	//ImGui_ImplGlfw_Shutdown();
-	//ImGui::DestroyContext();
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
 }
 
 void EditorWindow::ImGuiInitialisation(GLFWwindow* window)
@@ -39,6 +39,13 @@ void EditorWindow::EditorRendering()
 
 void EditorWindow::EditorGUIsetUp()
 {
-	ImGui::Begin("Fractal Editor");
+	if(ImGui::Begin("Fractal Editor"))
+	{
+		if(ImGui::Button("Open File"))
+		{
+			std::cout << "thas is Hello World" << std::endl;
+			//jaaj c'est quoi cette syntaxe ? btw OpenFile();
+		}
+	}
 	ImGui::End();
 }

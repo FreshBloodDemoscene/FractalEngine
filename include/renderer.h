@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <string>
+#include <portable-file-dialogs.h>
 
 class Window;
 
