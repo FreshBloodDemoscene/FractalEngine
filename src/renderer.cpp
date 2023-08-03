@@ -40,8 +40,6 @@ Renderer::Renderer(const Window& window)
 	glVertexArrayAttribFormat(vao, 0, 2, GL_FLOAT, false, 0);
 	glVertexArrayElementBuffer(vao, EBO);
 
-
-	//READ SHADER FILE AND LOAD IT IN SHADER RENDERER
 	ReadAndWrite_Shader();
 	m_shader = CreateShader(m_vertexShader, m_fragmentShader);
 	glUseProgram(m_shader);
@@ -116,8 +114,17 @@ unsigned int Renderer::CompileShader(unsigned int type, const std::string& sourc
 
 void Renderer::ReadAndWrite_Shader()
 {
-	auto vertexPath = pfd::open_file("Select VertexShader", ".", { "VertexShaderFiles", "*.vs" }).result();
-	auto shaderPath = pfd::open_file("Select FragmentShader", ".", { "FragmentShaderFiles", "*.fs" }).result();
+	if (fragmentShaderPath.empty() && vertexShaderPath.empty())
+	{
+		vertexPath = pfd::open_file("Select VertexShader", ".", { "VertexShaderFiles", "*.vs" }).result();
+		fragmentPath = pfd::open_file("Select FragmentShader", ".", { "FragmentShaderFiles", "*.fs" }).result();
+	}
+	else
+	{
+		vertexPath[0] = vertexShaderPath;
+		fragmentPath[0] = fragmentShaderPath;
+	}
+
 
 	std::string vertexCode;
 	std::string fragmentCode;
@@ -139,7 +146,7 @@ void Renderer::ReadAndWrite_Shader()
 			vShaderFile.open(filename);
 			vertexShaderPath = filename;
 		}
-		for (auto const& filename : shaderPath)
+		for (auto const& filename : fragmentPath)
 		{
 			if (filename.empty())
 			{
@@ -168,6 +175,8 @@ void Renderer::ReadAndWrite_Shader()
 
 	m_vertexShader = vertexCode.c_str();
 	m_fragmentShader = fragmentCode.c_str();
+
+	UpdateShader();
 }
 
 void Renderer::UpdateShader()

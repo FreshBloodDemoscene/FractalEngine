@@ -26,6 +26,9 @@ public:
 	std::string vertexShaderPath;
 	std::string fragmentShaderPath;
 
+	std::vector<std::string>vertexPath;
+	std::vector<std::string>fragmentPath;
+
 	void ReadAndWrite_Shader		();
 	static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
 	void UpdateShader();

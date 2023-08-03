@@ -22,6 +22,7 @@ int main(int argc, char** argv)
 	SoundTrack s;
 	//RocketValues rV;
 
+	
 	//auto selection = pfd::open_file("Choose Music", ".", { "*.wav *.mp3" }).result();
 	//for (auto const& filename : selection)
 	//{
@@ -40,11 +41,12 @@ int main(int argc, char** argv)
 
 		//syncTracker.Update(s);
 		renderer.Render();
+		editorWindow.EditorWindowSetUp(renderer);
+		editorWindow.EditorRendering();
+
 		file.UpdateFile(renderer, window, /*float(s.CurrentTime())*/1);
 
-		editorWindow.EditorWindowSetUp(renderer);
-		
-		editorWindow.EditorRendering();
+
 	} while (window.SwapBuffers() /*&& (SoundTrack::ms_IsPlaying(&s))*/);
 
 	return 0;

@@ -63,8 +63,10 @@ void EditorWindow::MainToolBar(Renderer& renderer)
 	{
 		if (ImGui::MenuItem("Open"))
 		{
-			renderer.ReadAndWrite_Shader();
+			renderer.fragmentShaderPath = "";
+			renderer.vertexShaderPath = "";
 
+			renderer.ReadAndWrite_Shader();
 		}
 		ImGui::EndMenu();
 	}
