@@ -144,6 +144,7 @@
     <ClCompile Include="src\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\renderer.cpp" />
+    <ClCompile Include="src\rocketValues.cpp" />
     <ClCompile Include="src\soundTrack.cpp" />
     <ClCompile Include="src\synctracker.cpp" />
     <ClCompile Include="src\textloader.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="include\imgui\imstb_textedit.h" />
     <ClInclude Include="include\imgui\imstb_truetype.h" />
     <ClInclude Include="include\renderer.h" />
+    <ClInclude Include="include\rocketValues.h" />
     <ClInclude Include="include\soundTrack.h" />
     <ClInclude Include="include\synctracker.h" />
     <ClInclude Include="include\textloader.h" />
@@ -170,6 +172,7 @@
   <ItemGroup>
     <None Include="ShaderFiles\Shader.fs" />
     <None Include="ShaderFiles\Shader.vs" />
+    <None Include="ShaderFiles\Shader2.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

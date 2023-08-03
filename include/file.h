@@ -19,8 +19,8 @@ class File
 public:
     E_FileStatus status;
 
-    const char* fragment_shader_file    = "ShaderFiles/Shader.fs";
-    const char* vertex_shader_file      = "ShaderFiles/Shader.vs";
+    std::string fragment_shader_file = "ShaderFiles/Shader.fs";
+    std::string vertex_shader_file = "ShaderFiles/Shader.vs";
 
     std::filesystem::file_time_type fs_changed;
     std::filesystem::file_time_type vs_changed;

@@ -69,6 +69,9 @@
     <ClCompile Include="src\editorWindow.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="src\rocketValues.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\renderer.h">
@@ -119,12 +122,18 @@
     <ClInclude Include="include\editorWindow.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="include\rocketValues.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ShaderFiles\Shader.fs">
       <Filter>ShaderFiles</Filter>
     </None>
     <None Include="ShaderFiles\Shader.vs">
+      <Filter>ShaderFiles</Filter>
+    </None>
+    <None Include="ShaderFiles\Shader2.vs">
       <Filter>ShaderFiles</Filter>
     </None>
   </ItemGroup>

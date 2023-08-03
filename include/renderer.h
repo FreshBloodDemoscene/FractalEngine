@@ -23,8 +23,12 @@ public:
 	std::string m_vertexShader = "";
 	std::string m_fragmentShader = "";
 
+	std::string vertexShaderPath;
+	std::string fragmentShaderPath;
+
 	void ReadAndWrite_Shader		();
 	static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
+	void UpdateShader();
 
 	explicit Renderer				(const Window& window);
 	~Renderer() noexcept;

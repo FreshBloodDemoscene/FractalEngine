@@ -7,7 +7,7 @@
 #include <GLFW/glfw3.h>
 
 File::File()
-{
+{	
 	fs_changed = std::filesystem::last_write_time(fragment_shader_file);
 	vs_changed = std::filesystem::last_write_time(vertex_shader_file);
 }
@@ -36,6 +36,9 @@ void File::CheckModification()
 
 void File::UpdateFile(Renderer& render, Window& window, float t)
 {
+	fragment_shader_file = render.fragmentShaderPath;
+	vertex_shader_file = render.vertexShaderPath;
+
 	CheckModification();
 
 	switch (status)

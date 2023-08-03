@@ -131,12 +131,23 @@ void Renderer::ReadAndWrite_Shader()
 	{
 		for (auto const &filename : vertexPath)
 		{
+			if (filename.empty())
+			{
+				vShaderFile.open(vertexShaderPath);
+			}
+
 			vShaderFile.open(filename);
+			vertexShaderPath = filename;
 		}
 		for (auto const& filename : shaderPath)
 		{
-			fShaderFile.open(filename);
+			if (filename.empty())
+			{
+				vShaderFile.open(fragmentShaderPath);
+			}
 
+			fShaderFile.open(filename);
+			fragmentShaderPath = filename;
 		}
 		std::stringstream vShaderStream, fShaderStream;
 
@@ -157,4 +168,10 @@ void Renderer::ReadAndWrite_Shader()
 
 	m_vertexShader = vertexCode.c_str();
 	m_fragmentShader = fragmentCode.c_str();
+}
+
+void Renderer::UpdateShader()
+{
+	m_shader = CreateShader(m_vertexShader, m_fragmentShader);
+	glUseProgram(m_shader);
 }
