@@ -42,9 +42,6 @@
     <ClCompile Include="src\synctracker.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\textloader.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="src\imgui\imgui.cpp">
       <Filter>Fichiers sources\imgui</Filter>
     </ClCompile>
@@ -71,6 +68,12 @@
     </ClCompile>
     <ClCompile Include="src\rocketValues.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\textloader.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\TextEditor.cpp">
+      <Filter>Fichiers sources\imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,15 +128,15 @@
     <ClInclude Include="include\rocketValues.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="include\imgui\TextEditor.h">
+      <Filter>Fichiers d%27en-tête\imgui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ShaderFiles\Shader.fs">
       <Filter>ShaderFiles</Filter>
     </None>
     <None Include="ShaderFiles\Shader.vs">
-      <Filter>ShaderFiles</Filter>
-    </None>
-    <None Include="ShaderFiles\Shader2.vs">
       <Filter>ShaderFiles</Filter>
     </None>
   </ItemGroup>

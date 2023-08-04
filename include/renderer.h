@@ -20,16 +20,15 @@ public:
 	uint32_t m_shader = 0;
 	uint32_t m_buffer = 0;
 
-	std::string m_vertexShader = "";
+	std::string m_vertexShader;
 	std::string m_fragmentShader = "";
 
-	std::string vertexShaderPath;
 	std::string fragmentShaderPath;
+	std::string vertexShaderPath = "ShaderFiles/Shader.vs";
 
-	std::vector<std::string>vertexPath;
 	std::vector<std::string>fragmentPath;
 
-	void ReadAndWrite_Shader		();
+	void CompileShader		();
 	static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
 	void UpdateShader();
 

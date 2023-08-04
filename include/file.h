@@ -20,10 +20,8 @@ public:
     E_FileStatus status;
 
     std::string fragment_shader_path = "";
-    std::string vertex_shader_path = "";
 
     std::filesystem::file_time_type fs_changed;
-    std::filesystem::file_time_type vs_changed;
 
     int doOnce = 0;
 

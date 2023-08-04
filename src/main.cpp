@@ -7,6 +7,7 @@
 #include <soundTrack.h>
 #include <synctracker.h>
 #include <rocketValues.h>
+#include <TextEditor.h>
 
 #define GLEW_STATIC
 #include <GL/glew.h>
@@ -18,6 +19,7 @@ int main(int argc, char** argv)
 	EditorWindow editorWindow;
 	SoundTrack soundtrack;
 	Renderer renderer(window);
+	TextEditor editor;
 	//SyncTracker syncTracker;
 	SoundTrack s;
 	//RocketValues rV;
@@ -32,17 +34,22 @@ int main(int argc, char** argv)
 
 	editorWindow.ImGuiInitialisation(window.m_window);
 
-
 	do
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 
+
+		renderer.Render();
+
+		editorWindow.EditorWindowSetUp(editor, renderer);
+		editorWindow.EditorRendering();
+
+
 		//rV.setUpRocketValues(syncTracker, renderer);
 
 		//syncTracker.Update(s);
-		renderer.Render();
-		editorWindow.EditorWindowSetUp(renderer);
-		editorWindow.EditorRendering();
+
+
 
 		file.UpdateFile(renderer, window, /*float(s.CurrentTime())*/1);
 
