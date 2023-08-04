@@ -133,29 +133,32 @@ void Renderer::CompileShader()
 	fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	try
 	{
-		for (auto const& filename : fragmentPath)
+		if (!fragmentPath.empty())
 		{
-			if (filename.empty())
+			for (auto const& filename : fragmentPath)
 			{
-				fShaderFile.open(fragmentShaderPath);
+				if (filename.empty())
+				{
+					fShaderFile.open(fragmentShaderPath);
+				}
+
+				fShaderFile.open(filename);
+				fragmentShaderPath = filename;
 			}
 
-			fShaderFile.open(filename);
-			fragmentShaderPath = filename;
-		}
+			vShaderFile.open(vertexShaderPath);
 
-		vShaderFile.open(vertexShaderPath);
+			std::stringstream vShaderStream, fShaderStream;
 
-		std::stringstream vShaderStream, fShaderStream;
+			vShaderStream << vShaderFile.rdbuf();
+			fShaderStream << fShaderFile.rdbuf();
 
-		vShaderStream << vShaderFile.rdbuf();
-		fShaderStream << fShaderFile.rdbuf();
+			vShaderFile.close();
+			fShaderFile.close();
 
-		vShaderFile.close();
-		fShaderFile.close();
-
-		vertexCode = vShaderStream.str();
-		fragmentCode = fShaderStream.str();
+			vertexCode = vShaderStream.str();
+			fragmentCode = fShaderStream.str();
+		}	
 	}
 	catch (std::ifstream::failure e)
 	{
