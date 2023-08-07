@@ -10,7 +10,9 @@
 
 #include <GLFW/glfw3.h>
 
-Renderer::Renderer(const Window& window)
+using namespace Graphics;
+
+Renderer::Renderer(const Core::Window& window)
 {
 	float positions[] = {
 		 1.0f,  1.0f,

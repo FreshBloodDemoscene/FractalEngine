@@ -1,3 +1,2 @@
-﻿  renderer.cpp
-C:\Users\qriga\Documents\GitHub\FractalEngine\src\renderer.cpp(59,18): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+﻿  main.cpp
   FractalEngine.vcxproj -> C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\FractalEngine.exe

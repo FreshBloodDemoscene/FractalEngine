@@ -3,7 +3,9 @@
 #define SET_LIGHT_MODE		ImGui::StyleColorsLight();
 #define SET_DARK_MODE		ImGui::StyleColorsDark();
 
-EditorWindow::EditorWindow() 
+using namespace Editor;
+
+EditorWindow::EditorWindow()
 {
 
 };
@@ -25,7 +27,7 @@ void EditorWindow::ImGuiInitialisation(GLFWwindow* window)
 	ImGui_ImplOpenGL3_Init("#version 460");
 }
 
-void EditorWindow::EditorWindowSetUp(TextEditor& editor, Renderer& renderer)
+void EditorWindow::EditorWindowSetUp(TextEditor& editor, Graphics::Renderer& renderer)
 {
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
@@ -40,14 +42,14 @@ void EditorWindow::EditorRendering()
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void EditorWindow::EditorGUIsetUp(TextEditor& editor, Renderer& renderer)
+void EditorWindow::EditorGUIsetUp(TextEditor& editor, Graphics::Renderer& renderer)
 {		
 	MainToolBar(editor, renderer);
 	IDE_Render(editor, renderer);
 	IDE_ShortCuts(editor, renderer);
 }
 
-void EditorWindow::IDE_Render(TextEditor& editor, Renderer& renderer)
+void EditorWindow::IDE_Render(TextEditor& editor, Graphics::Renderer& renderer)
 {
 	static bool s_firstTimeSetUp = false;
 	if (!s_firstTimeSetUp)
@@ -70,7 +72,7 @@ void EditorWindow::IDE_Render(TextEditor& editor, Renderer& renderer)
 	ImGui::End();
 }
 
-void EditorWindow::MainToolBar(TextEditor& editor, Renderer& renderer)
+void EditorWindow::MainToolBar(TextEditor& editor, Graphics::Renderer& renderer)
 {
 	switch (ThemeOfEditor)
 	{
@@ -161,7 +163,7 @@ void EditorWindow::MainToolBar(TextEditor& editor, Renderer& renderer)
 	ImGui::EndMainMenuBar();
 }
 
-void EditorWindow::IDE_ShortCuts(TextEditor& editor, Renderer& renderer)
+void EditorWindow::IDE_ShortCuts(TextEditor& editor, Graphics::Renderer& renderer)
 {
 	if (ImGui::IsKeyDown(ImGuiMod_Ctrl) && ImGui::IsKeyDown(ImGuiKey_S))
 	{
@@ -173,14 +175,14 @@ void EditorWindow::IDE_ShortCuts(TextEditor& editor, Renderer& renderer)
 	}
 }
 
-void EditorWindow::Open_File(Renderer& renderer)
+void EditorWindow::Open_File(Graphics::Renderer& renderer)
 {
 	renderer.fragmentShaderPath = "";
 
 	renderer.CompileShader();
 }
 
-void EditorWindow::Save_File(TextEditor& editor, Renderer& renderer)
+void EditorWindow::Save_File(TextEditor& editor, Graphics::Renderer& renderer)
 {
 	std::ofstream file(renderer.fragmentShaderPath, std::ofstream::out);
 	file << editor.GetText();

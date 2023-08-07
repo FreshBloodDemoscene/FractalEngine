@@ -2,7 +2,7 @@
 
 #include <string>
 
-
+using namespace HighLevel;
 
 sync_cb SoundTrack::s_syncLink =
 {

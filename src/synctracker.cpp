@@ -1,5 +1,4 @@
 #include <synctracker.h>
-#include <soundTrack.h>
 
 //#define SYNC_PLAYER
 
@@ -16,6 +15,8 @@
 #else /* !NDEBUG */
 # pragma comment(lib, "sync-s.lib")
 #endif /* !NDEBUG */
+
+using namespace HighLevel;
 
 SyncTracker::SyncTracker()
 	:m_row(0.0)

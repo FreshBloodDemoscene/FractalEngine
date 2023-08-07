@@ -9,15 +9,15 @@
 #include <stb_image.h>
 #include <glm/gtc/matrix_transform.hpp>
 
-
-
-class RocketValues
+namespace HighLevel
 {
-public:
-	explicit RocketValues();
-	~RocketValues();
+	class RocketValues
+	{
+	public:
+		explicit RocketValues();
+		~RocketValues();
 
-	void setUpRocketValues(SyncTracker s, Renderer& renderer);
-};
-
+		void setUpRocketValues(SyncTracker s, Graphics::Renderer& renderer);
+	};
+}
 #endif	//__FRACTALENGINE_ROCKETVALUES_H_

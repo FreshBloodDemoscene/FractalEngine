@@ -9,28 +9,23 @@
 #include <rocketValues.h>
 #include <TextEditor.h>
 
-#define GLEW_STATIC
+#define	GLEW_STATIC
 #include <GL/glew.h>
+
+using namespace Core;
+using namespace Graphics;
+using namespace HighLevel;
+using namespace Editor;
 
 int main(int argc, char** argv)
 {
-	File file;
-	Window window;
-	EditorWindow editorWindow;
-	SoundTrack soundtrack;
-	Renderer renderer(window);
-	TextEditor editor;
-	//SyncTracker syncTracker;
-	SoundTrack s;
-	//RocketValues rV;
+	File					file;
+	Window					window;
+	EditorWindow			editorWindow;
+	Renderer				renderer(window);
+	TextEditor				editor;
 
-	
-	//auto selection = pfd::open_file("Choose Music", ".", { "*.wav *.mp3" }).result();
-	//for (auto const& filename : selection)
-	//{
-	//	s.PlayMusic(filename);
-	//}
-	
+	HighLevel::SoundTrack	s;
 
 	editorWindow.ImGuiInitialisation(window.m_window);
 
@@ -38,21 +33,12 @@ int main(int argc, char** argv)
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 
-
 		renderer.Render();
 
 		editorWindow.EditorWindowSetUp(editor, renderer);
 		editorWindow.EditorRendering();
 
-
-		//rV.setUpRocketValues(syncTracker, renderer);
-
-		//syncTracker.Update(s);
-
-
-
 		file.UpdateFile(renderer, window, /*float(s.CurrentTime())*/1);
-
 
 	} while (window.SwapBuffers() /*&& (SoundTrack::ms_IsPlaying(&s))*/);
 

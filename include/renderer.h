@@ -5,37 +5,37 @@
 #include <string>
 #include <portable-file-dialogs.h>
 
-class Window;
+namespace Core { class Window; }
 
-class Renderer final
+namespace Graphics
 {
-	uint32_t	vao;
-	uint32_t	vertexBuffer;
+	class Renderer final
+	{
+	public:
+		uint32_t							vao;
+		uint32_t							vertexBuffer;
+		uint32_t							m_shader = 0;
+		uint32_t							m_buffer = 0;
 
-	float		positions[6];
+		float								positions[6];
 
-	static unsigned int CompileShader(unsigned int type, const std::string& source);
+		std::string							m_vertexShader;
+		std::string							m_fragmentShader = "";
+		std::string							fragmentShaderPath;
+		std::string							vertexShaderPath = "ShaderFiles/Shader.vs";
 
-public:
-	uint32_t m_shader = 0;
-	uint32_t m_buffer = 0;
+		std::vector<std::string>			fragmentPath;
 
-	std::string m_vertexShader;
-	std::string m_fragmentShader = "";
+		void CompileShader();
+		static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
 
-	std::string fragmentShaderPath;
-	std::string vertexShaderPath = "ShaderFiles/Shader.vs";
+		static unsigned int CompileShader(unsigned int type, const std::string& source);
+		void UpdateShader();
 
-	std::vector<std::string>fragmentPath;
+		explicit Renderer(const Core::Window& window);
+		~Renderer() noexcept;
 
-	void CompileShader		();
-	static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
-	void UpdateShader();
-
-	explicit Renderer				(const Window& window);
-	~Renderer() noexcept;
-
-	void Render						();
-};
-
+		void Render();
+	};
+}
 #endif	//__FRACTAL_ENGINE_RENDERER_H__

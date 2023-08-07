@@ -8,7 +8,7 @@
 
 #define FRAGMENTSHADER_LAST_TIME_EDITED  std::filesystem::last_write_time(fragment_shader_path);
 
-
+using namespace Core;
 
 File::File()
 {	
@@ -34,7 +34,7 @@ void File::CheckModification()
 	}
 }
 
-void File::UpdateFile(Renderer& render, Window& window, float t)
+void File::UpdateFile(Graphics::Renderer& render, Window& window, float t)
 {
 	if (!render.fragmentShaderPath.empty())
 	{

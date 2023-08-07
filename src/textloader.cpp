@@ -3,6 +3,8 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
+using namespace Graphics;
+
 void textLoader::loadImage(const char* image_path, int width, int height, int nrChannels, int req_comp)
 {
     glGenTextures(1, &texture);

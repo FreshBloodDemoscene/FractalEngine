@@ -3,38 +3,37 @@
 
 #include <cstdint>
 #include <string>
-
 #include <glm/glm.hpp>
 #include <stb_image.h>
 
 struct GLFWwindow;
 struct GLFWmonitor;
 
-class Window final
+namespace Core
 {
-	GLFWmonitor* m_monitor = nullptr;
-	glm::ivec2   m_size;
+	class Window final
+	{
+		GLFWmonitor* m_monitor = nullptr;
+		glm::ivec2					m_size;
 
-	void FullScreenMode(GLFWwindow* window);
-	
-	void ErrorCallBack(int error, const char* description);
+		void FullScreenMode(GLFWwindow* window);
 
-	static void s_KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+		void ErrorCallBack(int error, const char* description);
 
-public:	
-	GLFWwindow* m_window = nullptr;
-	static const int32_t kDEFAULT_WIDTH  = 800,
-	                     kDEFAULT_HEIGHT = 600;
+		static void s_KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	public:
+		GLFWwindow* m_window = nullptr;
+		static const int32_t		kDEFAULT_WIDTH = 800,
+			kDEFAULT_HEIGHT = 600;
 
-	
-	int iconWidth, iconHeight, iconChannels;
-	unsigned char* iconPixels;
+		int							iconWidth, iconHeight, iconChannels;
+		unsigned char* iconPixels;
 
-	explicit Window(const glm::ivec2& size = glm::ivec2(kDEFAULT_WIDTH, kDEFAULT_HEIGHT));
-	~Window();
+		explicit Window(const glm::ivec2& size = glm::ivec2(kDEFAULT_WIDTH, kDEFAULT_HEIGHT));
+		~Window();
 
-	bool SwapBuffers();
-	glm::ivec2 Size() const;
-};
-
+		bool SwapBuffers();
+		glm::ivec2 Size() const;
+	};
+}
 #endif	//__FRACTAL_ENGINE_WINDOW_H__

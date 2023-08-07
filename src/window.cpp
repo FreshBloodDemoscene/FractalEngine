@@ -15,6 +15,8 @@
 # pragma comment(lib, "glfw3-s.lib")
 #endif
 
+using namespace Core;
+
 Window::Window(const glm::ivec2& size)
 	: m_size(size)
 {

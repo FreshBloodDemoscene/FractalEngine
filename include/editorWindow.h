@@ -17,24 +17,26 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 
-class EditorWindow
+namespace Editor
 {
-public:
-	explicit EditorWindow();
-	~EditorWindow();
+	class EditorWindow
+	{
+	public:
+		explicit EditorWindow();
+		~EditorWindow();
 
-	void ImGuiInitialisation(GLFWwindow* window);
-	void EditorWindowSetUp(TextEditor& editor, Renderer& renderer);
-	void EditorRendering();
-	void EditorGUIsetUp(TextEditor& editor, Renderer& renderer);
-	void IDE_Render(TextEditor& editor, Renderer& renderer);
+		void ImGuiInitialisation	(GLFWwindow* window);
+		void EditorWindowSetUp		(TextEditor& editor, Graphics::Renderer& renderer);
+		void EditorRendering		();
+		void EditorGUIsetUp			(TextEditor& editor, Graphics::Renderer& renderer);
+		void IDE_Render				(TextEditor& editor, Graphics::Renderer& renderer);
 
-	void MainToolBar(TextEditor& editor, Renderer& renderer);
-	
-	void IDE_ShortCuts(TextEditor& editor, Renderer& renderer);
-	void Open_File(Renderer& renderer);
-	void Save_File(TextEditor& editor, Renderer& renderer);
-	int ThemeOfEditor = 1;
-};
+		void MainToolBar			(TextEditor& editor, Graphics::Renderer& renderer);
 
+		void IDE_ShortCuts			(TextEditor& editor, Graphics::Renderer& renderer);
+		void Open_File				(Graphics::Renderer& renderer);
+		void Save_File				(TextEditor& editor, Graphics::Renderer& renderer);
+		int							ThemeOfEditor = 1;
+	};
+}
 #endif	//__FRACTAL_ENGINE_EDITORWINDOW_H__
