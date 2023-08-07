@@ -1,14 +1,11 @@
 #include <editorWindow.h>
 
-#define SET_LIGHT_MODE		ImGui::StyleColorsLight();
-#define SET_DARK_MODE		ImGui::StyleColorsDark();
-
 using namespace Editor;
 
-EditorWindow::EditorWindow()
-{
+#define EDITOR_SET_LIGHT_MODE		ImGui::StyleColorsLight();
+#define EDITOR_SET_DARK_MODE		ImGui::StyleColorsDark();
 
-};
+EditorWindow::EditorWindow(){};
 
 EditorWindow::~EditorWindow()
 {
@@ -17,7 +14,7 @@ EditorWindow::~EditorWindow()
 	ImGui::DestroyContext();
 }
 
-void EditorWindow::ImGuiInitialisation(GLFWwindow* window)
+void EditorWindow::ImGui_Initialisation(GLFWwindow* window)
 {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -27,24 +24,24 @@ void EditorWindow::ImGuiInitialisation(GLFWwindow* window)
 	ImGui_ImplOpenGL3_Init("#version 460");
 }
 
-void EditorWindow::EditorWindowSetUp(TextEditor& editor, Graphics::Renderer& renderer)
+void EditorWindow::Editor_WindowSetUp(TextEditor& editor, Graphics::Renderer& renderer)
 {
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 
-	EditorWindow::EditorGUIsetUp(editor, renderer);
+	EditorWindow::Editor_GUIsetUp(editor, renderer);
 }
 
-void EditorWindow::EditorRendering()
+void EditorWindow::Editor_Rendering()
 {
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void EditorWindow::EditorGUIsetUp(TextEditor& editor, Graphics::Renderer& renderer)
+void EditorWindow::Editor_GUIsetUp(TextEditor& editor, Graphics::Renderer& renderer)
 {		
-	MainToolBar(editor, renderer);
+	Editor_MainToolBar(editor, renderer);
 	IDE_Render(editor, renderer);
 	IDE_ShortCuts(editor, renderer);
 }
@@ -66,21 +63,20 @@ void EditorWindow::IDE_Render(TextEditor& editor, Graphics::Renderer& renderer)
 	}
 	if (ImGui::Begin("Fractal Engine - IDE", nullptr, ImGuiWindowFlags_NoNav))
 	{
-		editor.Render("ShaderEditor");
-		
+		editor.Render("ShaderEditor");	
 	}
 	ImGui::End();
 }
 
-void EditorWindow::MainToolBar(TextEditor& editor, Graphics::Renderer& renderer)
+void EditorWindow::Editor_MainToolBar(TextEditor& editor, Graphics::Renderer& renderer)
 {
-	switch (ThemeOfEditor)
+	switch (themeOfEditor)
 	{
 	case 0:
-		SET_LIGHT_MODE;
+		EDITOR_SET_LIGHT_MODE;
 		break;
 	case 1:
-		SET_DARK_MODE;
+		EDITOR_SET_DARK_MODE;
 		break;
 	}
 
@@ -90,13 +86,12 @@ void EditorWindow::MainToolBar(TextEditor& editor, Graphics::Renderer& renderer)
 	{
 		if (ImGui::MenuItem("Open", "Ctrl-O"))
 		{
-			Open_File(renderer);
+			IDE_Open_File(editor, renderer);
 		}
 		if (ImGui::MenuItem("Save", "Ctrl-S"))
 		{
-			Save_File(editor, renderer);
+			IDE_Save_File(editor, renderer);
 		}
-
 		if (ImGui::MenuItem("ClearConsole"))
 		{
 			system("cls");
@@ -107,9 +102,9 @@ void EditorWindow::MainToolBar(TextEditor& editor, Graphics::Renderer& renderer)
 	if (ImGui::BeginMenu("Edit"))
 	{
 		bool ro = editor.IsReadOnly();
+
 		if (ImGui::MenuItem("Read-only mode", nullptr, &ro))
 			editor.SetReadOnly(ro);
-
 		if (ImGui::MenuItem("Undo", "ALT-Backspace", nullptr, !ro && editor.CanUndo()))
 			editor.Undo();
 		if (ImGui::MenuItem("Redo", "Ctrl-Y", nullptr, !ro && editor.CanRedo()))
@@ -140,11 +135,11 @@ void EditorWindow::MainToolBar(TextEditor& editor, Graphics::Renderer& renderer)
 		{
 			if (ImGui::MenuItem("Light"))
 			{
-				ThemeOfEditor = 0;
+				themeOfEditor = 0;
 			}
 			if (ImGui::MenuItem("Dark"))
 			{
-				ThemeOfEditor = 1;
+				themeOfEditor = 1;
 			}
 			ImGui::EndMenu();
 		}
@@ -167,22 +162,22 @@ void EditorWindow::IDE_ShortCuts(TextEditor& editor, Graphics::Renderer& rendere
 {
 	if (ImGui::IsKeyDown(ImGuiMod_Ctrl) && ImGui::IsKeyDown(ImGuiKey_S))
 	{
-		Save_File(editor, renderer);
+		IDE_Save_File(editor, renderer);
 	}
 	if (ImGui::IsKeyDown(ImGuiMod_Ctrl) && ImGui::IsKeyDown(ImGuiKey_O))
 	{
-		Open_File(renderer);
+		IDE_Open_File(editor, renderer);
 	}
 }
 
-void EditorWindow::Open_File(Graphics::Renderer& renderer)
+void EditorWindow::IDE_Open_File(TextEditor& editor, Graphics::Renderer& renderer)
 {
 	renderer.fragmentShaderPath = "";
-
-	renderer.CompileShader();
+	renderer.Renderer_ReadAndCompileShader();
+	editor.SetText(renderer.m_fragmentShader);
 }
 
-void EditorWindow::Save_File(TextEditor& editor, Graphics::Renderer& renderer)
+void EditorWindow::IDE_Save_File(TextEditor& editor, Graphics::Renderer& renderer)
 {
 	std::ofstream file(renderer.fragmentShaderPath, std::ofstream::out);
 	file << editor.GetText();

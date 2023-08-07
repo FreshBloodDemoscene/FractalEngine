@@ -1,14 +1,12 @@
 #include <soundTrack.h>
 
-#include <string>
-
 using namespace HighLevel;
 
 sync_cb SoundTrack::s_syncLink =
 {
-	SoundTrack::ms_Pause,
-	SoundTrack::ms_SetRow,
-	SoundTrack::ms_IsPlaying
+	SoundTrack::SoundTrack_Ms_Pause,
+	SoundTrack::SoundTrack_Ms_SetRow,
+	SoundTrack::SoundTrack_M_IsPlaying
 };
 
 SoundTrack::SoundTrack()
@@ -26,38 +24,35 @@ SoundTrack::SoundTrack()
 	}
 }
 
-SoundTrack::~SoundTrack()
-{
+SoundTrack::~SoundTrack(){}
 
-}
-
-void SoundTrack::PlayMusic(std::string musicPath)
+void SoundTrack::SoundTrack_PlayMusic(std::string musicPath)
 {
 	SoundTrack();
 	std::string* filePath = new std::string(musicPath);
-	m_streamHandle = BASS_StreamCreateFile(false, getFile(filePath), 0, 0, 0);
+	m_streamHandle = BASS_StreamCreateFile(false, SoundTrack_GetFile(filePath), 0, 0, 0);
 	BASS_ChannelPlay(m_streamHandle, true);
 }
 
-void* SoundTrack::getFile(std::string* file) {
+void* SoundTrack::SoundTrack_GetFile(std::string* file) {
 	return file->data();
 }
 
-double SoundTrack::CurrentRow() const
+double SoundTrack::SoundTrack_CurrentRow() const
 {
 	QWORD pos = BASS_ChannelGetPosition(m_streamHandle, BASS_POS_BYTE);
 	double time = BASS_ChannelBytes2Seconds(m_streamHandle, pos);
 	return time * m_rowRate;
 }
 
-double SoundTrack::CurrentTime() const
+double SoundTrack::SoundTrack_CurrentTime() const
 {
 	QWORD pos = BASS_ChannelGetPosition(m_streamHandle, BASS_POS_BYTE);
 	double time = BASS_ChannelBytes2Seconds(m_streamHandle, pos);
 	return time;
 }
 
-void SoundTrack::ms_Pause(void* d, int flag)
+void SoundTrack::SoundTrack_Ms_Pause(void* d, int flag)
 {
 	SoundTrack* self = static_cast<SoundTrack*>(d);
 	if (flag)
@@ -66,14 +61,14 @@ void SoundTrack::ms_Pause(void* d, int flag)
 		BASS_ChannelPlay(self->m_streamHandle, false);
 }
 
-void SoundTrack::ms_SetRow(void* d, int row)
+void SoundTrack::SoundTrack_Ms_SetRow(void* d, int row)
 {
 	SoundTrack* self = static_cast<SoundTrack*>(d);
 	QWORD pos = BASS_ChannelSeconds2Bytes(self->m_streamHandle, row / self->m_rowRate);
 	BASS_ChannelSetPosition(self->m_streamHandle, pos, BASS_POS_BYTE);
 }
 
-int SoundTrack::ms_IsPlaying(void* d)
+int SoundTrack::SoundTrack_M_IsPlaying(void* d)
 {
 	SoundTrack* self = static_cast<SoundTrack*>(d);
 	return BASS_ChannelIsActive(self->m_streamHandle) == BASS_ACTIVE_PLAYING;

@@ -13,8 +13,9 @@ namespace Graphics
 	{
 		unsigned int	texture;
 	public:
-		void loadImage(const char* image_path, int width, int height, int nrChannels, int req_comp);
-		void Use(unsigned int unit);
+		void			TextLoader_LoadImage		(const char* image_path, int width, int height
+													, int nrChannels, int req_comp);
+		void			TextLoader_Use				(unsigned int unit);
 	};
 }
 #endif	//__FRACTAL_ENGINE_TEXTLOADER_H__

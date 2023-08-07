@@ -1,14 +1,4 @@
 #include <renderer.h>
-#include <window.h>
-
-#include <iostream>
-#include <fstream>
-#include <sstream>
-
-#define GLEW_STATIC
-#include <GL/glew.h>
-
-#include <GLFW/glfw3.h>
 
 using namespace Graphics;
 
@@ -42,11 +32,11 @@ Renderer::Renderer(const Core::Window& window)
 	glVertexArrayAttribFormat(vao, 0, 2, GL_FLOAT, false, 0);
 	glVertexArrayElementBuffer(vao, EBO);
 
-	CompileShader();
-	m_shader = CreateShader(m_vertexShader, m_fragmentShader);
+	Renderer_ReadAndCompileShader();
+	m_shader = Renderer_CreateShader(m_vertexShader, m_fragmentShader);
 	glUseProgram(m_shader);
 
-	glProgramUniform2f(m_shader, 0, float(window.Size().x), float(window.Size().y));
+	glProgramUniform2f(m_shader, 0, float(window.Window_Size().x), float(window.Window_Size().y));
 }
 
 Renderer::~Renderer() noexcept
@@ -64,18 +54,17 @@ void Renderer::Render()
 
 	glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 
-
 	glBindVertexArray(vao);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 	glBindVertexArray(0);
 }
 
-unsigned int Renderer::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
+unsigned int Renderer::Renderer_CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
 {
 	unsigned int program = glCreateProgram();
 
-	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
-	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
+	unsigned int vs = Renderer_CompileShader(GL_VERTEX_SHADER, vertexShader);
+	unsigned int fs = Renderer_CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
 
 	glAttachShader(program, vs);
 	glAttachShader(program, fs);
@@ -88,7 +77,7 @@ unsigned int Renderer::CreateShader(const std::string& vertexShader, const std::
 	return program;
 }
 
-unsigned int Renderer::CompileShader(unsigned int type, const std::string& source)
+unsigned int Renderer::Renderer_CompileShader(unsigned int type, const std::string& source)
 {
 	unsigned int id = glCreateShader(type);
 	const char* src = source.c_str();
@@ -114,7 +103,7 @@ unsigned int Renderer::CompileShader(unsigned int type, const std::string& sourc
 	return id;
 }
 
-void Renderer::CompileShader()
+void Renderer::Renderer_ReadAndCompileShader()
 {
 	if (fragmentShaderPath.empty())
 	{
@@ -143,7 +132,6 @@ void Renderer::CompileShader()
 				{
 					fShaderFile.open(fragmentShaderPath);
 				}
-
 				fShaderFile.open(filename);
 				fragmentShaderPath = filename;
 			}
@@ -176,6 +164,6 @@ void Renderer::CompileShader()
 
 void Renderer::UpdateShader()
 {
-	m_shader = CreateShader(m_vertexShader, m_fragmentShader);
+	m_shader = Renderer_CreateShader(m_vertexShader, m_fragmentShader);
 	glUseProgram(m_shader);
 }

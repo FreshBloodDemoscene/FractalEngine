@@ -1,19 +1,17 @@
 #include <synctracker.h>
 
-//#define SYNC_PLAYER
-
-#include <rocket/sync.h>
-
-#include <exception>
-
-#ifndef SYNC_PLAYER
-#pragma comment(lib, "ws2_32.lib")
-#endif // SYNC_PLAYER
+#ifndef NDEBUG
+    #ifndef SYNC_PLAYER
+    #pragma comment(lib, "ws2_32.lib")
+    #endif // SYNC_PLAYER
+#else /* !NDEBUG */
+    #define SYNC_PLAYER
+#endif /* !NDEBUG */
 
 #ifndef NDEBUG
-# pragma comment(lib, "sync-s-d.lib")
-#else /* !NDEBUG */
-# pragma comment(lib, "sync-s.lib")
+    # pragma comment(lib, "sync-s-d.lib")
+    #else /* !NDEBUG */
+    # pragma comment(lib, "sync-s.lib")
 #endif /* !NDEBUG */
 
 using namespace HighLevel;
@@ -39,10 +37,10 @@ SyncTracker::~SyncTracker() noexcept
     sync_destroy_device(m_rocket);
 }
 
-void SyncTracker::Update(SoundTrack& soundtrack)
+void SyncTracker::SyncTracker_Update(SoundTrack& soundtrack)
 {
-    m_row = soundtrack.CurrentRow();
-    m_time = soundtrack.CurrentTime();
+    m_row = soundtrack.SoundTrack_CurrentRow();
+    m_time = soundtrack.SoundTrack_CurrentTime();
 
 #ifndef SYNC_PLAYER
     if (sync_update(m_rocket, (int)floor(m_row), &SoundTrack::s_syncLink, (void*)&soundtrack))
@@ -50,7 +48,7 @@ void SyncTracker::Update(SoundTrack& soundtrack)
 #endif
 }
 
-float SyncTracker::FetchValue(const std::string& name)
+float SyncTracker::SyncTracker_FetchValue(const std::string& name)
 {
     if (!m_tracks.contains(name))
         m_tracks[name] = sync_get_track(m_rocket, name.c_str());
@@ -61,7 +59,7 @@ float SyncTracker::FetchValue(const std::string& name)
     return sync_get_val(m_tracks[name], m_row);
 }
 
-float SyncTracker::CurrentTime()
+float SyncTracker::SyncTracker_CurrentTime()
 {
     return float(m_time);
 }

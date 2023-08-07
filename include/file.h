@@ -1,15 +1,20 @@
 #ifndef __FRACTAL_ENGINE_FILE_H__
 #define __FRACTAL_ENGINE_FILE_H__
 
-#include <filesystem>
 #include <chrono>
+#include <filesystem>
+#include <functional>
+#include <iostream>
+#include <string>
 #include <thread>
 #include <unordered_map>
-#include <string>
-#include <functional>
 
-#include <window.h>
 #include <renderer.h>
+#include <window.h>
+
+#define GLEW_STATIC
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 enum class E_FileStatus {modified, nothingChanged};
 
@@ -20,17 +25,14 @@ namespace Core
     public:
         E_FileStatus                    status;
 
-        std::string                     fragment_shader_path = "";
-
+        std::string                     fragment_shader_path    = "";
         std::filesystem::file_time_type fs_changed;
-
-        int                             doOnce = 0;
 
         explicit File();
         ~File() noexcept;
 
-        void UpdateFile(Graphics::Renderer& render, Window& window, float t);
-        void CheckModification();
+        void                            File_Update             (Graphics::Renderer& render, Window& window, float t);
+        void                            File_CheckModification  ();
     };
 }
 #endif  //__FRACTAL_ENGINE_FILE_H__

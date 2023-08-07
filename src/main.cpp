@@ -1,13 +1,13 @@
 #include <iostream>
 
 #include <editorWindow.h>
-#include <window.h>
-#include <renderer.h>
 #include <file.h>
+#include <renderer.h>
+#include <rocketValues.h>
 #include <soundTrack.h>
 #include <synctracker.h>
-#include <rocketValues.h>
 #include <TextEditor.h>
+#include <window.h>
 
 #define	GLEW_STATIC
 #include <GL/glew.h>
@@ -19,15 +19,15 @@ using namespace Editor;
 
 int main(int argc, char** argv)
 {
+	EditorWindow			editorWindow;
 	File					file;
 	Window					window;
-	EditorWindow			editorWindow;
 	Renderer				renderer(window);
 	TextEditor				editor;
 
 	HighLevel::SoundTrack	s;
 
-	editorWindow.ImGuiInitialisation(window.m_window);
+	editorWindow.ImGui_Initialisation(window.m_window);
 
 	do
 	{
@@ -35,12 +35,12 @@ int main(int argc, char** argv)
 
 		renderer.Render();
 
-		editorWindow.EditorWindowSetUp(editor, renderer);
-		editorWindow.EditorRendering();
+		editorWindow.Editor_WindowSetUp(editor, renderer);
+		editorWindow.Editor_Rendering();
 
-		file.UpdateFile(renderer, window, /*float(s.CurrentTime())*/1);
+		file.File_Update(renderer, window, 1);
 
-	} while (window.SwapBuffers() /*&& (SoundTrack::ms_IsPlaying(&s))*/);
+	} while (window.Window_SwapBuffers());
 
 	return 0;
 }

@@ -1,19 +1,9 @@
 #include <rocketValues.h>
 
-#define GLEW_STATIC
-#include <GL/glew.h>
-
 using namespace HighLevel;
 
-RocketValues::RocketValues()
-{
-}
+RocketValues::RocketValues(){}
 
-void RocketValues::setUpRocketValues(SyncTracker s, Graphics::Renderer& renderer)
-{
-}
+void RocketValues::RocketValues_SetUp(SyncTracker s, Graphics::Renderer& renderer){}
 
-RocketValues::~RocketValues()
-{
-
-}
+RocketValues::~RocketValues(){}

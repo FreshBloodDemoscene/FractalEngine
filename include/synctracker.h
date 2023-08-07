@@ -1,10 +1,12 @@
 #ifndef __FRACTAL_ENGINE_SYNCTRACKER_H__
 #define __FRACTAL_ENGINE_SYNCTRACKER_H__
 
-#include <soundTrack.h>
-
+#include <exception>
 #include <string>
 #include <unordered_map>
+
+#include <rocket/sync.h>
+#include <soundTrack.h>
 
 struct sync_device;
 struct sync_track;
@@ -24,9 +26,9 @@ namespace HighLevel
 		explicit SyncTracker();
 		~SyncTracker() noexcept;
 
-		void Update(SoundTrack& SoundTrack);
-		float FetchValue(const std::string& name);
-		float CurrentTime();
+		void												SyncTracker_Update		(SoundTrack& SoundTrack);
+		float												SyncTracker_FetchValue	(const std::string& name);
+		float												SyncTracker_CurrentTime	();
 	};
 }
 #endif	//__FRACTAL_ENGINE_SYNCTRACKER_H__

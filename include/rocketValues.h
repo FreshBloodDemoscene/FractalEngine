@@ -1,13 +1,16 @@
 #ifndef __FRACTALENGINE_ROCKETVALUES_H_
 #define __FRACTALENGINE_ROCKETVALUES_H_
 
+#include <iostream>
+#include <glm/gtc/matrix_transform.hpp>
+#include <stb_image.h>
+
+#include <renderer.h>
 #include <synctracker.h>
 #include <textloader.h>
 
-#include <iostream>
-#include <renderer.h>
-#include <stb_image.h>
-#include <glm/gtc/matrix_transform.hpp>
+#define GLEW_STATIC
+#include <GL/glew.h>
 
 namespace HighLevel
 {
@@ -15,9 +18,9 @@ namespace HighLevel
 	{
 	public:
 		explicit RocketValues();
-		~RocketValues();
+		~RocketValues() noexcept;
 
-		void setUpRocketValues(SyncTracker s, Graphics::Renderer& renderer);
+		void			RocketValues_SetUp			(SyncTracker s, Graphics::Renderer& renderer);
 	};
 }
 #endif	//__FRACTALENGINE_ROCKETVALUES_H_
