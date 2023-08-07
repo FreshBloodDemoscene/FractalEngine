@@ -1,0 +1,33 @@
+﻿  editorWindow.cpp
+  file.cpp
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_glfw.cpp
+  imgui_impl_opengl3.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  TextEditor.cpp
+  main.cpp
+  renderer.cpp
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\renderer.cpp(51,18): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+  rocketValues.cpp
+  soundTrack.cpp
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\soundTrack.cpp(16,6): warning C4551: liste d'arguments manquante dans l'appel de fonction
+  synctracker.cpp
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\synctracker.cpp(59,24): warning C4244: 'return' : conversion de 'double' en 'float', perte possible de données
+  textloader.cpp
+  window.cpp
+MSVCRT.lib(initializers.obj) : warning LNK4098: conflit entre la bibliothèque par défaut 'libcmt.lib' et les autres bibliothèques ; utilisez /NODEFAULTLIB:library
+sync-s.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj) : error LNK2001: symbole externe non résolu __imp_closesocket
+sync-s.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj) : error LNK2001: symbole externe non résolu __imp_connect
+sync-s.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj) : error LNK2001: symbole externe non résolu __imp_htonl
+sync-s.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj) : error LNK2001: symbole externe non résolu __imp_ntohl
+sync-s.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj) : error LNK2001: symbole externe non résolu __imp_recv
+sync-s.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj) : error LNK2001: symbole externe non résolu __imp_select
+sync-s.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj) : error LNK2001: symbole externe non résolu __imp_send
+sync-s.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj) : error LNK2001: symbole externe non résolu __imp_socket
+sync-s.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj) : error LNK2001: symbole externe non résolu __imp_WSAStartup
+sync-s.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj) : error LNK2001: symbole externe non résolu __imp_getaddrinfo
+sync-s.lib(device-c-8076f882bf60486028ccb28c74e662f5.obj) : error LNK2001: symbole externe non résolu __imp_freeaddrinfo
+C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Release\FractalEngine.exe : fatal error LNK1120: 11 externes non résolus

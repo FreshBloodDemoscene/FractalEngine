@@ -16,11 +16,13 @@ namespace HighLevel
 {
 	class RocketValues
 	{
+	private:
+		glm::vec3					color;
 	public:
 		explicit RocketValues();
 		~RocketValues() noexcept;
 
-		void			RocketValues_SetUp			(SyncTracker s, Graphics::Renderer& renderer);
+		void						RocketValues_SetUp			(SyncTracker s, Graphics::Renderer& renderer);
 	};
 }
 #endif	//__FRACTALENGINE_ROCKETVALUES_H_
