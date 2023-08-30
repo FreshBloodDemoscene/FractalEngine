@@ -23,11 +23,13 @@ int main(int argc, char** argv)
 	File					file;
 	Window					window;
 	Renderer				renderer(window);
-	RocketValues			rV;
+	//RocketValues			rV;
 	TextEditor				editor;
 
 	HighLevel::SoundTrack	s;
-	SyncTracker				syncTracker;
+	//SyncTracker			syncTracker;
+
+	glm::vec3	color = glm::vec3(1.0f, 0.0f, 0.0f);
 
 	editorWindow.ImGui_Initialisation(window.m_window);
 	
@@ -44,9 +46,9 @@ int main(int argc, char** argv)
 		editorWindow.Editor_WindowSetUp(editor, renderer);
 		editorWindow.Editor_Rendering();
 
-		file.File_Update(renderer, window, /*float(s.SoundTrack_CurrentTime())*/1);
+		file.File_Update(renderer, window, /*float(s.SoundTrack_CurrentTime()) */ 1);
 
-	} while (window.Window_SwapBuffers() /* && (HighLevel::SoundTrack::SoundTrack_M_IsPlaying(&s))*/);
+	} while (window.Window_SwapBuffers() /*&& (HighLevel::SoundTrack::SoundTrack_M_IsPlaying(&s))*/);
 
 	return 0;
 }
