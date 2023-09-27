@@ -1,4 +1,5 @@
 #include <editorWindow.h>
+#include <bass.h>
 
 using namespace Editor;
 

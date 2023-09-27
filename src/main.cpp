@@ -8,6 +8,7 @@
 #include <synctracker.h>
 #include <TextEditor.h>
 #include <window.h>
+#include <mediaPlayer.h>
 
 #define	GLEW_STATIC
 #include <GL/glew.h>
@@ -23,32 +24,28 @@ int main(int argc, char** argv)
 	File					file;
 	Window					window;
 	Renderer				renderer(window);
-	//RocketValues			rV;
 	TextEditor				editor;
+	MediaPlayer				mediaPlayer;
 
 	HighLevel::SoundTrack	s;
-	//SyncTracker			syncTracker;
 
 	glm::vec3	color = glm::vec3(1.0f, 0.0f, 0.0f);
 
 	editorWindow.ImGui_Initialisation(window.m_window);
-	
-	//s.SoundTrack_PlayMusic("Evoke2023.mp3");
+	mediaPlayer.ChooseSong();
 
 	do
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
-		//rV.RocketValues_SetUp(syncTracker, renderer);
 
-		//syncTracker.SyncTracker_Update(s);
 		renderer.Render();
 
 		editorWindow.Editor_WindowSetUp(editor, renderer);
 		editorWindow.Editor_Rendering();
 
-		file.File_Update(renderer, window, /*float(s.SoundTrack_CurrentTime()) */ 1);
+		file.File_Update(renderer, window, 1);
 
-	} while (window.Window_SwapBuffers() /*&& (HighLevel::SoundTrack::SoundTrack_M_IsPlaying(&s))*/);
+	} while (window.Window_SwapBuffers());
 
 	return 0;
 }
