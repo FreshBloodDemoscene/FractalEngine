@@ -28,11 +28,12 @@ namespace HighLevel
 
 		HSTREAM						m_streamHandle = NULL;
 
-		void						SoundTrack_Pause			(HSTREAM i);
+		void						SoundTrack_Pause			();
+		void						SoundTrack_Unpause			();
 
 		static sync_cb				s_syncLink;
 		
-		void						SoundTrack_Initialisation	();
+		static void					SoundTrack_Initialisation	();
 
 		double						SoundTrack_CurrentRow   () const;
 		double						SoundTrack_CurrentTime	() const;

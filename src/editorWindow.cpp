@@ -182,7 +182,7 @@ void EditorWindow::Sync_Tool()
 		if (ImGui::Button("Pause", ImVec2(150, 20)))
 		{
 			//soundTrack.CreateHandle();
-			soundTrack.SoundTrack_Pause(rV.i);
+			soundTrack.SoundTrack_Pause();
 		}
 		
 		if (ImGui::Button("Play", ImVec2(150, 20)))
@@ -190,6 +190,7 @@ void EditorWindow::Sync_Tool()
 			//soundTrack.SoundTrack_Ms_Pause(&soundTrack.m_streamHandle, 0);
 			
 			std::cout << soundTrack.m_streamHandle << std::endl;
+			soundTrack.SoundTrack_Unpause();
 		}
 		
 		if (ImGui::Button("Mute", ImVec2(150, 20)))

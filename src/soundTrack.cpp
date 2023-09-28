@@ -48,10 +48,16 @@ double SoundTrack::SoundTrack_CurrentTime() const
 	return time;
 }
 
-void SoundTrack::SoundTrack_Pause(HSTREAM i)
+void SoundTrack::SoundTrack_Pause()
 {
-	BASS_ChannelPause(i);
-	std::cout << i << std::endl;
+	BASS_ChannelPause(m_streamHandle);
+	//std::cout << i << std::endl;
+}
+
+
+void SoundTrack::SoundTrack_Unpause()
+{
+	BASS_ChannelPlay(m_streamHandle, FALSE);
 }
 
 void SoundTrack::SoundTrack_Ms_SetRow(void* d, int row)

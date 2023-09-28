@@ -20,8 +20,7 @@ using namespace Editor;
 
 int main(int argc, char** argv)
 {
-	HighLevel::SoundTrack	soundTrack;
-	soundTrack.SoundTrack_Initialisation();
+	HighLevel::SoundTrack::SoundTrack_Initialisation();
 
 	RocketValues			rV;
 	EditorWindow			editorWindow;
@@ -43,7 +42,7 @@ int main(int argc, char** argv)
 	{
 		if (!filename.empty())
 		{
-			soundTrack.SoundTrack_PlayMusic(filename);
+			editorWindow.soundTrack.SoundTrack_PlayMusic(filename);
 			//rV.i = soundTrack.m_streamHandle;
 		}
 	}
