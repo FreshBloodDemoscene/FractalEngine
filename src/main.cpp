@@ -23,6 +23,7 @@ int main(int argc, char** argv)
 	HighLevel::SoundTrack	soundTrack;
 	soundTrack.SoundTrack_Initialisation();
 
+	RocketValues			rV;
 	EditorWindow			editorWindow;
 	File					file;
 	Window					window;
@@ -43,12 +44,13 @@ int main(int argc, char** argv)
 		if (!filename.empty())
 		{
 			soundTrack.SoundTrack_PlayMusic(filename);
-			std::cout << soundTrack.m_streamHandle << std::endl;
+			//rV.i = soundTrack.m_streamHandle;
 		}
 	}
 
 	do
 	{
+		//nstd::cout << rV.i << std::endl;
 		glClear(GL_COLOR_BUFFER_BIT);
 		renderer.Render();
 

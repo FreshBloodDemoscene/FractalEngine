@@ -22,11 +22,13 @@ namespace HighLevel
 
 		void						SoundTrack_PlayMusic	(std::string musicPath);
 
-		static void					SoundTrack_Ms_Pause		(void* d, int flag);
+		//static void					SoundTrack_Ms_Pause		(void* d, int flag);
 		static void					SoundTrack_Ms_SetRow	(void* d, int row);
 		static int					SoundTrack_M_IsPlaying	(void* d);
 
 		HSTREAM						m_streamHandle = NULL;
+
+		void						SoundTrack_Pause			(HSTREAM i);
 
 		static sync_cb				s_syncLink;
 		

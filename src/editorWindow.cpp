@@ -6,7 +6,7 @@ using namespace Editor;
 #define EDITOR_SET_LIGHT_MODE		ImGui::StyleColorsLight();
 #define EDITOR_SET_DARK_MODE		ImGui::StyleColorsDark();
 
-EditorWindow::EditorWindow(){};
+EditorWindow::EditorWindow() {};
 
 EditorWindow::~EditorWindow()
 {
@@ -97,6 +97,10 @@ void EditorWindow::Editor_MainToolBar(TextEditor& editor, Graphics::Renderer& re
 		{
 			system("cls");
 		}
+		if (ImGui::MenuItem("Docking", "Ctrl-D"))
+		{
+			Editor_DockingWindow();
+		}
 		ImGui::EndMenu();
 	}
 
@@ -177,13 +181,14 @@ void EditorWindow::Sync_Tool()
 		
 		if (ImGui::Button("Pause", ImVec2(150, 20)))
 		{
-			soundTrack.SoundTrack_Ms_Pause(&soundTrack.m_streamHandle, 1);
-			std::cout << soundTrack.m_streamHandle << std::endl;
+			//soundTrack.CreateHandle();
+			soundTrack.SoundTrack_Pause(rV.i);
 		}
 		
 		if (ImGui::Button("Play", ImVec2(150, 20)))
 		{
-			soundTrack.SoundTrack_Ms_Pause(&soundTrack.m_streamHandle, 0);
+			//soundTrack.SoundTrack_Ms_Pause(&soundTrack.m_streamHandle, 0);
+			
 			std::cout << soundTrack.m_streamHandle << std::endl;
 		}
 		
@@ -191,8 +196,19 @@ void EditorWindow::Sync_Tool()
 		{
 			std::cout << "Muted" << std::endl;
 		}
+
+		ImGui::Separator();
+		ImGui::Text("1");
+
+		ImGui::SameLine();
+		if (ImGui::Button("SELECT ROW VARIABLE TYPE"))
+		{
+			canSpawnVarTypeWindow = true;
+		}
 	}
 	ImGui::End();
+
+	SpawnVarTypeWindow();
 }
 
 void EditorWindow::IDE_ShortCuts(TextEditor& editor, Graphics::Renderer& renderer)
@@ -204,6 +220,10 @@ void EditorWindow::IDE_ShortCuts(TextEditor& editor, Graphics::Renderer& rendere
 	if (ImGui::IsKeyDown(ImGuiMod_Ctrl) && ImGui::IsKeyDown(ImGuiKey_O))
 	{
 		IDE_Open_File(editor, renderer);
+	}
+	if (ImGui::IsKeyDown(ImGuiMod_Ctrl) && ImGui::IsKeyDown(ImGuiKey_D))
+	{
+		Editor_DockingWindow();
 	}
 }
 
@@ -220,3 +240,90 @@ void EditorWindow::IDE_Save_File(TextEditor& editor, Graphics::Renderer& rendere
 	file << editor.GetText();
 	file.close();
 }
+
+void EditorWindow::Editor_DockingWindow()
+{
+	ImGuiIO& io = ImGui::GetIO();
+	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+}
+
+void EditorWindow::SpawnVarTypeWindow()
+{
+	if (canSpawnVarTypeWindow)
+	{
+		if (ImGui::Begin("ROW VARIABLE CHOOSE"))
+		{
+			if (ImGui::Button("Int"))
+			{
+				VariableType = E_EditoVarTypes::E_Int;
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("Float"))
+			{
+				VariableType = E_EditoVarTypes::E_Float;
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("String"))
+			{
+				VariableType = E_EditoVarTypes::E_Str;
+			}	
+			ImGui::SameLine();
+			if (ImGui::Button("Vec1"))
+			{
+				VariableType = E_EditoVarTypes::E_Vec1;
+			}	
+			ImGui::SameLine();
+			if (ImGui::Button("Vec2"))
+			{
+				VariableType = E_EditoVarTypes::E_Vec2;
+			}	
+			ImGui::SameLine();
+			if (ImGui::Button("Vec3"))
+			{
+				VariableType = E_EditoVarTypes::E_Vec3;
+			}	
+			ImGui::SameLine();
+			if (ImGui::Button("Bool"))
+			{
+				VariableType = E_EditoVarTypes::E_Bool;
+			}
+			if (ImGui::Button("Close Window"))
+			{
+				canSpawnVarTypeWindow = false;
+			}
+			VariableBehavior();
+		}
+		ImGui::End();
+	}
+}
+
+void EditorWindow::VariableBehavior()
+{
+	switch (VariableType)
+	{
+	case Editor::EditorWindow::E_Int:
+		std::cout << "Int" << std::endl;
+		break;
+	case Editor::EditorWindow::E_Float:
+		std::cout << "Float" << std::endl;
+		break;
+	case Editor::EditorWindow::E_Str:
+		std::cout << "String" << std::endl;
+		break;
+	case Editor::EditorWindow::E_Vec1:
+		std::cout << "Vector 1" << std::endl;
+		break;
+	case Editor::EditorWindow::E_Vec2:
+		std::cout << "Vector 2" << std::endl;
+		break;
+	case Editor::EditorWindow::E_Vec3:
+		std::cout << "Vector 3" << std::endl;
+		break;
+	case Editor::EditorWindow::E_Bool:
+		std::cout << "Boolean" << std::endl;
+		break;
+	default:
+		break;
+	}
+}
+

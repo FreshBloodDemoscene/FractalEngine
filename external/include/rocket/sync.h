@@ -27,7 +27,6 @@ void sync_destroy_device(struct sync_device *);
 
 #ifndef SYNC_PLAYER
 struct sync_cb {
-	void (*pause)(void *, int);
 	void (*set_row)(void *, int);
 	int (*is_playing)(void *);
 };

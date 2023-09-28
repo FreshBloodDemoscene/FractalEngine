@@ -4,18 +4,15 @@ using namespace HighLevel;
 
 sync_cb SoundTrack::s_syncLink =
 {
-	SoundTrack::SoundTrack_Ms_Pause,
 	SoundTrack::SoundTrack_Ms_SetRow,
 	SoundTrack::SoundTrack_M_IsPlaying
 };
 
-SoundTrack::SoundTrack()
-{}
+SoundTrack::SoundTrack(){}
 
 void SoundTrack::SoundTrack_Initialisation()
 {
 	BOOL b = BASS_Init(-1, 44100, BASS_DEVICE_STEREO, 0, NULL);
-
 	if (!b)
 	{
 		std::cout << BASS_ErrorGetCode() << std::endl;
@@ -35,7 +32,6 @@ void SoundTrack::SoundTrack_PlayMusic(std::string musicPath)
 	std::string filePath(musicPath);
 	m_streamHandle = BASS_StreamCreateFile(false, filePath.data(), 0, 0, 0);
 	BASS_ChannelPlay(m_streamHandle, true);
-	std::cout << m_streamHandle << std::endl;
 }
 
 double SoundTrack::SoundTrack_CurrentRow() const
@@ -52,13 +48,10 @@ double SoundTrack::SoundTrack_CurrentTime() const
 	return time;
 }
 
-void SoundTrack::SoundTrack_Ms_Pause(void* d, int flag)
+void SoundTrack::SoundTrack_Pause(HSTREAM i)
 {
-	SoundTrack* self = static_cast<SoundTrack*>(d);
-	if (flag)
-		BASS_ChannelPause(self->m_streamHandle);
-	else
-		BASS_ChannelPlay(self->m_streamHandle, false);
+	BASS_ChannelPause(i);
+	std::cout << i << std::endl;
 }
 
 void SoundTrack::SoundTrack_Ms_SetRow(void* d, int row)
