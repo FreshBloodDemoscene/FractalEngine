@@ -44,6 +44,7 @@ void EditorWindow::Editor_GUIsetUp(TextEditor& editor, Graphics::Renderer& rende
 {		
 	Editor_MainToolBar(editor, renderer);
 	IDE_Render(editor, renderer);
+	Sync_Tool();
 	IDE_ShortCuts(editor, renderer);
 }
 
@@ -82,7 +83,6 @@ void EditorWindow::Editor_MainToolBar(TextEditor& editor, Graphics::Renderer& re
 	}
 
 	ImGui::BeginMainMenuBar();
-
 	if (ImGui::BeginMenu("File"))
 	{
 		if (ImGui::MenuItem("Open", "Ctrl-O"))
@@ -157,6 +157,42 @@ void EditorWindow::Editor_MainToolBar(TextEditor& editor, Graphics::Renderer& re
 		ImGui::EndMenu();
 	}
 	ImGui::EndMainMenuBar();
+}
+
+void EditorWindow::Sync_Tool()
+{
+	if (ImGui::Begin("Fractal Engine - SyncTool", nullptr, ImGuiWindowFlags_NoNav))
+	{
+		if (ImGui::SliderFloat("Tempo", &tempo, 0, 180, "%.0f", 0))
+		{
+			soundTrack.SetTempo(tempo);
+		}
+
+		ImGui::Separator();
+		
+		if (ImGui::SliderFloat("Volume", &volume, 0.0f, 1.0f, "%.3f", 0))
+		{
+			std::cout << volume << std::endl;
+		}
+		
+		if (ImGui::Button("Pause", ImVec2(150, 20)))
+		{
+			soundTrack.SoundTrack_Ms_Pause(&soundTrack.m_streamHandle, 1);
+			std::cout << soundTrack.m_streamHandle << std::endl;
+		}
+		
+		if (ImGui::Button("Play", ImVec2(150, 20)))
+		{
+			soundTrack.SoundTrack_Ms_Pause(&soundTrack.m_streamHandle, 0);
+			std::cout << soundTrack.m_streamHandle << std::endl;
+		}
+		
+		if (ImGui::Button("Mute", ImVec2(150, 20)))
+		{
+			std::cout << "Muted" << std::endl;
+		}
+	}
+	ImGui::End();
 }
 
 void EditorWindow::IDE_ShortCuts(TextEditor& editor, Graphics::Renderer& renderer)

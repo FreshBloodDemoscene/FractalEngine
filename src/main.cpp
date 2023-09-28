@@ -20,30 +20,43 @@ using namespace Editor;
 
 int main(int argc, char** argv)
 {
+	HighLevel::SoundTrack	soundTrack;
+	soundTrack.SoundTrack_Initialisation();
+
 	EditorWindow			editorWindow;
 	File					file;
 	Window					window;
 	Renderer				renderer(window);
 	TextEditor				editor;
 	MediaPlayer				mediaPlayer;
-
-	HighLevel::SoundTrack	s;
+	
 
 	glm::vec3	color = glm::vec3(1.0f, 0.0f, 0.0f);
 
 	editorWindow.ImGui_Initialisation(window.m_window);
-	mediaPlayer.ChooseSong();
+	/*mediaPlayer.ChooseSong();*/
+
+	auto songPath = pfd::open_file("Select a Song :", ".", { "MP3 and OGG files", "*.mp3 *.ogg" }).result();
+
+	for (auto const& filename : songPath)
+	{
+		if (!filename.empty())
+		{
+			soundTrack.SoundTrack_PlayMusic(filename);
+			std::cout << soundTrack.m_streamHandle << std::endl;
+		}
+	}
 
 	do
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
-
 		renderer.Render();
 
 		editorWindow.Editor_WindowSetUp(editor, renderer);
 		editorWindow.Editor_Rendering();
 
 		file.File_Update(renderer, window, 1);
+
 
 	} while (window.Window_SwapBuffers());
 

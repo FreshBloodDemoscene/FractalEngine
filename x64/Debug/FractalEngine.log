@@ -1,2 +1,6 @@
-﻿  mediaPlayer.cpp
+﻿  main.cpp
+  mediaPlayer.cpp
+  synctracker.cpp
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\synctracker.cpp(59,24): warning C4244: 'return' : conversion de 'double' en 'float', perte possible de données
+  Génération de code en cours...
   FractalEngine.vcxproj -> C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\FractalEngine.exe
