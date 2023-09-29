@@ -1,2 +1,15 @@
 ﻿  editorWindow.cpp
+  main.cpp
+  mediaPlayer.cpp
+  soundTrack.cpp
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\soundTrack.cpp(35,35): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\soundTrack.cpp(48,11): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+  synctracker.cpp
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\synctracker.cpp(59,24): warning C4244: 'return' : conversion de 'double' en 'float', perte possible de données
+  Génération de code en cours...
+glfw3-s-d.lib(input.obj) : warning LNK4099: PDB '' n'a pu être trouvé avec 'glfw3-s-d.lib(input.obj)' ou sur '' ; l'objet sera lié sans informations de débogage
+glfw3-s-d.lib(monitor.obj) : warning LNK4099: PDB '' n'a pu être trouvé avec 'glfw3-s-d.lib(monitor.obj)' ou sur '' ; l'objet sera lié sans informations de débogage
+glfw3-s-d.lib(window.obj) : warning LNK4099: PDB '' n'a pu être trouvé avec 'glfw3-s-d.lib(window.obj)' ou sur '' ; l'objet sera lié sans informations de débogage
+glfw3-s-d.lib(win32_joystick.obj) : warning LNK4099: PDB '' n'a pu être trouvé avec 'glfw3-s-d.lib(win32_joystick.obj)' ou sur '' ; l'objet sera lié sans informations de débogage
+glfw3-s-d.lib(win32_window.obj) : warning LNK4099: PDB '' n'a pu être trouvé avec 'glfw3-s-d.lib(win32_window.obj)' ou sur '' ; l'objet sera lié sans informations de débogage
   FractalEngine.vcxproj -> C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\FractalEngine.exe

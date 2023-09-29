@@ -73,3 +73,28 @@ int SoundTrack::SoundTrack_M_IsPlaying(void* d)
 	return BASS_ChannelIsActive(self->m_streamHandle) == BASS_ACTIVE_PLAYING;
 }
 
+void SoundTrack::Mute(bool mute)
+{
+	if (mute)
+	{
+		last_volume = volume;
+		volume = 0;
+		SetVolume();
+	}
+	else
+	{
+		volume = last_volume;
+		SetVolume();
+	}
+
+}
+
+void SoundTrack::GetVolume()
+{
+	BASS_ChannelGetAttribute(m_streamHandle, BASS_ATTRIB_VOL, &volume);
+}
+
+void SoundTrack::SetVolume()
+{
+	BASS_ChannelSetAttribute(m_streamHandle, BASS_ATTRIB_VOL, volume);
+}

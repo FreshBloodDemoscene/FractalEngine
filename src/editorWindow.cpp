@@ -167,9 +167,9 @@ void EditorWindow::Sync_Tool()
 {
 	if (ImGui::Begin("Fractal Engine - SyncTool", nullptr, ImGuiWindowFlags_NoNav))
 	{
-		if (ImGui::SliderFloat("Volume", &volume, 0.0f, 1.0f, "%.3f", 0))
+		if (ImGui::SliderFloat("Volume", &soundTrack.volume, 0.0f, 1.0f, "%.3f", 0))
 		{
-			std::cout << volume << std::endl;
+			soundTrack.SetVolume();
 		}
 		
 		if (ImGui::Button("Pause", ImVec2(150, 20)))
@@ -184,7 +184,13 @@ void EditorWindow::Sync_Tool()
 		
 		if (ImGui::Button("Mute", ImVec2(150, 20)))
 		{
-			std::cout << "Muted" << std::endl;
+			soundTrack.Mute(true);
+		}
+		
+		ImGui::SameLine();
+		if (ImGui::Button("UnMute", ImVec2(150, 20)))
+		{
+			soundTrack.Mute(false);
 		}
 
 		ImGui::Separator();

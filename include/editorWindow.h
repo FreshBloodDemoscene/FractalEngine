@@ -26,7 +26,6 @@ namespace Editor
 	private:
 		int							themeOfEditor			= 1;
 		float						tempo					= 0;
-		float						volume					= 0;
 		bool						canSpawnVarTypeWindow	= false;
 		bool						canSpawnIntWindow		= false;
 	public:

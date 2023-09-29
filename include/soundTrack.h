@@ -38,7 +38,13 @@ namespace HighLevel
 		double						SoundTrack_Length		() const;
 		
 		void						SetTempo(float _tempo){tempo = _tempo;}
+		void						Mute(bool mute);
 
+		void						GetVolume();
+		void						SetVolume();
+
+		float						volume = 1;
+		float						last_volume;
 
 #define								ROWS_PER_BEAT			(8.0)	
 
