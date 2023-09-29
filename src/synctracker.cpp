@@ -40,7 +40,7 @@ SyncTracker::~SyncTracker() noexcept
 void SyncTracker::SyncTracker_Update(SoundTrack& soundtrack)
 {
     m_row = soundtrack.SoundTrack_CurrentRow();
-    m_time = soundtrack.SoundTrack_CurrentTime();
+    m_time = soundtrack.SoundTrack_Length();
 
 #ifndef SYNC_PLAYER
     if (sync_update(m_rocket, (int)floor(m_row), &SoundTrack::s_syncLink, (void*)&soundtrack))

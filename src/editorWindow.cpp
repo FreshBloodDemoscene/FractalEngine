@@ -167,13 +167,6 @@ void EditorWindow::Sync_Tool()
 {
 	if (ImGui::Begin("Fractal Engine - SyncTool", nullptr, ImGuiWindowFlags_NoNav))
 	{
-		if (ImGui::SliderFloat("Tempo", &tempo, 0, 180, "%.0f", 0))
-		{
-			soundTrack.SetTempo(tempo);
-		}
-
-		ImGui::Separator();
-		
 		if (ImGui::SliderFloat("Volume", &volume, 0.0f, 1.0f, "%.3f", 0))
 		{
 			std::cout << volume << std::endl;
@@ -181,15 +174,11 @@ void EditorWindow::Sync_Tool()
 		
 		if (ImGui::Button("Pause", ImVec2(150, 20)))
 		{
-			//soundTrack.CreateHandle();
 			soundTrack.SoundTrack_Pause();
 		}
 		
 		if (ImGui::Button("Play", ImVec2(150, 20)))
-		{
-			//soundTrack.SoundTrack_Ms_Pause(&soundTrack.m_streamHandle, 0);
-			
-			std::cout << soundTrack.m_streamHandle << std::endl;
+		{	
 			soundTrack.SoundTrack_Unpause();
 		}
 		
@@ -199,13 +188,20 @@ void EditorWindow::Sync_Tool()
 		}
 
 		ImGui::Separator();
-		ImGui::Text("1");
-
-		ImGui::SameLine();
-		if (ImGui::Button("SELECT ROW VARIABLE TYPE"))
+		
+		std::cout << soundTrack.timeNeeded << std::endl;
+		for (int i = 0; i < soundTrack.timeNeeded; i++)
 		{
-			canSpawnVarTypeWindow = true;
+			ImGui::Text("%d", i);
+			ImGui::SameLine();
+			
+			if (ImGui::Button("SELECT ROW VARIABLE TYPE"))
+			{
+				canSpawnVarTypeWindow = true;
+			}
+			ImGui::NewLine();
 		}
+		
 	}
 	ImGui::End();
 

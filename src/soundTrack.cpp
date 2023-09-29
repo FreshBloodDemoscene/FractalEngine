@@ -32,6 +32,7 @@ void SoundTrack::SoundTrack_PlayMusic(std::string musicPath)
 	std::string filePath(musicPath);
 	m_streamHandle = BASS_StreamCreateFile(false, filePath.data(), 0, 0, 0);
 	BASS_ChannelPlay(m_streamHandle, true);
+	timeNeeded = SoundTrack_Length() * m_rowRate;
 }
 
 double SoundTrack::SoundTrack_CurrentRow() const
@@ -41,7 +42,7 @@ double SoundTrack::SoundTrack_CurrentRow() const
 	return time * m_rowRate;
 }
 
-double SoundTrack::SoundTrack_CurrentTime() const
+double SoundTrack::SoundTrack_Length() const
 {
 	QWORD len = BASS_ChannelGetLength(m_streamHandle, BASS_POS_BYTE);
 	int time = BASS_ChannelBytes2Seconds(m_streamHandle, len);
@@ -51,7 +52,6 @@ double SoundTrack::SoundTrack_CurrentTime() const
 void SoundTrack::SoundTrack_Pause()
 {
 	BASS_ChannelPause(m_streamHandle);
-	//std::cout << i << std::endl;
 }
 
 

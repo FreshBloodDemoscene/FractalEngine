@@ -22,7 +22,6 @@ namespace HighLevel
 
 		void						SoundTrack_PlayMusic	(std::string musicPath);
 
-		//static void					SoundTrack_Ms_Pause		(void* d, int flag);
 		static void					SoundTrack_Ms_SetRow	(void* d, int row);
 		static int					SoundTrack_M_IsPlaying	(void* d);
 
@@ -36,7 +35,7 @@ namespace HighLevel
 		static void					SoundTrack_Initialisation	();
 
 		double						SoundTrack_CurrentRow   () const;
-		double						SoundTrack_CurrentTime	() const;
+		double						SoundTrack_Length		() const;
 		
 		void						SetTempo(float _tempo){tempo = _tempo;}
 
@@ -44,6 +43,8 @@ namespace HighLevel
 #define								ROWS_PER_BEAT			(8.0)	
 
 		const double				m_rowRate				= (tempo / 60.0) * ROWS_PER_BEAT;
+
+		int							timeNeeded; 
 	};
 }
 #endif	//__FRACTAL_ENGINE_WINDOW_H__

@@ -1,10 +1,7 @@
-#include <iostream>
-
+#include <iostream>             
 #include <editorWindow.h>
 #include <file.h>
 #include <renderer.h>
-#include <rocketValues.h>
-#include <soundTrack.h>
 #include <synctracker.h>
 #include <TextEditor.h>
 #include <window.h>
@@ -22,7 +19,6 @@ int main(int argc, char** argv)
 {
 	HighLevel::SoundTrack::SoundTrack_Initialisation();
 
-	RocketValues			rV;
 	EditorWindow			editorWindow;
 	File					file;
 	Window					window;
@@ -34,22 +30,19 @@ int main(int argc, char** argv)
 	glm::vec3	color = glm::vec3(1.0f, 0.0f, 0.0f);
 
 	editorWindow.ImGui_Initialisation(window.m_window);
-	/*mediaPlayer.ChooseSong();*/
 
-	auto songPath = pfd::open_file("Select a Song :", ".", { "MP3 and OGG files", "*.mp3 *.ogg" }).result();
+	auto songPath = pfd::open_file("Select a Song :", ".", { "MP3, WAV and OGG files", "*.mp3 *.ogg *.wav" }).result();
 
 	for (auto const& filename : songPath)
 	{
 		if (!filename.empty())
 		{
 			editorWindow.soundTrack.SoundTrack_PlayMusic(filename);
-			//rV.i = soundTrack.m_streamHandle;
 		}
 	}
 
 	do
 	{
-		//nstd::cout << rV.i << std::endl;
 		glClear(GL_COLOR_BUFFER_BIT);
 		renderer.Render();
 
