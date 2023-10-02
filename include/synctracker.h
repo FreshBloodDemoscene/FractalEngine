@@ -1,34 +1,22 @@
-#ifndef __FRACTAL_ENGINE_SYNCTRACKER_H__
-#define __FRACTAL_ENGINE_SYNCTRACKER_H__
+#ifndef _FRACTAL_ENGINE_SYNCTRACKER__H_
+#define _FRACTAL_ENGINE_SYNCTRACKER__H_
 
-#include <exception>
-#include <string>
-#include <unordered_map>
+#include <iostream>
 
-#include <rocket/sync.h>
-#include <soundTrack.h>
-
-struct sync_device;
-struct sync_track;
-
-class SoundTrack;
-
-namespace HighLevel
+namespace Editor
 {
-	class SyncTracker
+	namespace SyncTracker
 	{
-		double												m_row;
-		double												m_time;
-		sync_device* m_rocket;
-		std::unordered_map<std::string, const sync_track*>	m_tracks;
+		class EditorSyncTracker
+		{
+		public:
+			explicit EditorSyncTracker();
+			~EditorSyncTracker() noexcept;
 
-	public:
-		explicit SyncTracker();
-		~SyncTracker() noexcept;
+			float FetchValue(const std::string& name);
 
-		void												SyncTracker_Update		(SoundTrack& SoundTrack);
-		float												SyncTracker_FetchValue	(const std::string& name);
-		float												SyncTracker_CurrentTime	();
-	};
+		};
+	}
 }
-#endif	//__FRACTAL_ENGINE_SYNCTRACKER_H__
+
+#endif //_FRACTAL_ENGINE_SYNCTRACKER__H_

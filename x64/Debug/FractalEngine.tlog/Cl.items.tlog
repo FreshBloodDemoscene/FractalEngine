@@ -1,3 +1,5 @@
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\editorIDE.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\editorIDE.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\editorSyncTool.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\editorSyncTool.obj
 C:\Users\qriga\Documents\GitHub\FractalEngine\src\editorWindow.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\editorWindow.obj
 C:\Users\qriga\Documents\GitHub\FractalEngine\src\file.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\file.obj
 C:\Users\qriga\Documents\GitHub\FractalEngine\src\imgui\imgui.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\imgui.obj
@@ -9,10 +11,8 @@ C:\Users\qriga\Documents\GitHub\FractalEngine\src\imgui\imgui_tables.cpp;C:\User
 C:\Users\qriga\Documents\GitHub\FractalEngine\src\imgui\imgui_widgets.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\imgui_widgets.obj
 C:\Users\qriga\Documents\GitHub\FractalEngine\src\imgui\TextEditor.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\TextEditor.obj
 C:\Users\qriga\Documents\GitHub\FractalEngine\src\main.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\main.obj
-C:\Users\qriga\Documents\GitHub\FractalEngine\src\mediaPlayer.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\mediaPlayer.obj
 C:\Users\qriga\Documents\GitHub\FractalEngine\src\renderer.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\renderer.obj
-C:\Users\qriga\Documents\GitHub\FractalEngine\src\rocketValues.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\rocketValues.obj
 C:\Users\qriga\Documents\GitHub\FractalEngine\src\soundTrack.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\soundTrack.obj
-C:\Users\qriga\Documents\GitHub\FractalEngine\src\synctracker.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\synctracker.obj
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\syncTracker.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\syncTracker.obj
 C:\Users\qriga\Documents\GitHub\FractalEngine\src\textloader.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\textloader.obj
 C:\Users\qriga\Documents\GitHub\FractalEngine\src\window.cpp;C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\window.obj

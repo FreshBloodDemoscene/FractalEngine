@@ -2,10 +2,8 @@
 #include <editorWindow.h>
 #include <file.h>
 #include <renderer.h>
-#include <synctracker.h>
 #include <TextEditor.h>
 #include <window.h>
-#include <mediaPlayer.h>
 
 #define	GLEW_STATIC
 #include <GL/glew.h>
@@ -24,7 +22,6 @@ int main(int argc, char** argv)
 	Window					window;
 	Renderer				renderer(window);
 	TextEditor				editor;
-	MediaPlayer				mediaPlayer;
 	
 
 	glm::vec3	color = glm::vec3(1.0f, 0.0f, 0.0f);
@@ -37,7 +34,7 @@ int main(int argc, char** argv)
 	{
 		if (!filename.empty())
 		{
-			editorWindow.soundTrack.SoundTrack_PlayMusic(filename);
+			editorWindow.editorSyncTool.soundTrack.SoundTrack_PlayMusic(filename);
 		}
 	}
 

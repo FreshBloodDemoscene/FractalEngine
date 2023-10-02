@@ -133,6 +133,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\editorIDE.cpp" />
+    <ClCompile Include="src\editorSyncTool.cpp" />
     <ClCompile Include="src\editorWindow.cpp" />
     <ClCompile Include="src\file.cpp" />
     <ClCompile Include="src\imgui\imgui.cpp" />
@@ -144,15 +146,15 @@
     <ClCompile Include="src\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\imgui\TextEditor.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\mediaPlayer.cpp" />
     <ClCompile Include="src\renderer.cpp" />
-    <ClCompile Include="src\rocketValues.cpp" />
     <ClCompile Include="src\soundTrack.cpp" />
-    <ClCompile Include="src\synctracker.cpp" />
+    <ClCompile Include="src\syncTracker.cpp" />
     <ClCompile Include="src\textloader.cpp" />
     <ClCompile Include="src\window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\editorIDE.h" />
+    <ClInclude Include="include\editorSyncTool.h" />
     <ClInclude Include="include\editorWindow.h" />
     <ClInclude Include="include\file.h" />
     <ClInclude Include="include\imgui\imconfig.h" />
@@ -165,11 +167,9 @@
     <ClInclude Include="include\imgui\imstb_textedit.h" />
     <ClInclude Include="include\imgui\imstb_truetype.h" />
     <ClInclude Include="include\imgui\TextEditor.h" />
-    <ClInclude Include="include\mediaPlayer.h" />
     <ClInclude Include="include\renderer.h" />
-    <ClInclude Include="include\rocketValues.h" />
     <ClInclude Include="include\soundTrack.h" />
-    <ClInclude Include="include\synctracker.h" />
+    <ClInclude Include="include\syncTracker.h" />
     <ClInclude Include="include\textloader.h" />
     <ClInclude Include="include\window.h" />
   </ItemGroup>
