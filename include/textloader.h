@@ -9,13 +9,13 @@
 
 namespace Graphics
 {
-	class textLoader
+	class TextLoader
 	{
 		unsigned int	texture;
 	public:
-		void			TextLoader_LoadImage		(const char* image_path, int width, int height
+		void			LoadImage		(const char* image_path, int width, int height
 													, int nrChannels, int req_comp);
-		void			TextLoader_Use				(unsigned int unit);
+		void			Use				(unsigned int unit);
 	};
 }
 #endif	//__FRACTAL_ENGINE_TEXTLOADER_H__

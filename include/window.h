@@ -22,14 +22,14 @@ namespace Core
 
 		GLFWmonitor*				m_monitor								= nullptr;
 		
-		void						Window_FullScreenMode					(GLFWwindow* window);
+		void						FullScreenMode					(GLFWwindow* window);
 
-		void						Window_ErrorCallBack					(int error, const char* description);
+		void						ErrorCallBack					(int error, const char* description);
 
-		static void					Window_S_KeyCallback					(GLFWwindow* window, int key, 
+		static void					S_KeyCallback					(GLFWwindow* window, int key, 
 																			int scancode, int action, int mods);
 	public:
-		glm::ivec2					Window_Size() const;
+		glm::ivec2					Size() const;
 
 		GLFWwindow*					m_window								= nullptr;
 		static const int32_t		kDEFAULT_WIDTH							= 800,
@@ -41,7 +41,7 @@ namespace Core
 		explicit					Window(const glm::ivec2& size			= glm::ivec2(kDEFAULT_WIDTH, kDEFAULT_HEIGHT));
 		~Window();
 
-		bool						Window_SwapBuffers();
+		bool						SwapBuffers();
 	};
 }
 #endif	//__FRACTAL_ENGINE_WINDOW_H__

@@ -5,7 +5,7 @@ using namespace Editor::SyncTool;
 void EditorSyncTool::Sync_Tool()
 {
 	if (ImGui::Begin("Fractal Engine - SyncTool", nullptr, ImGuiWindowFlags_NoNav))
-	{
+	{	
 		if (ImGui::SliderFloat("Volume", &soundTrack.volume, 0.0f, 1.0f, "%.3f", 0))
 		{
 			soundTrack.SetVolume();
@@ -13,12 +13,12 @@ void EditorSyncTool::Sync_Tool()
 
 		if (ImGui::Button("Pause", ImVec2(150, 20)))
 		{
-			soundTrack.SoundTrack_Pause();
+			soundTrack.Pause();
 		}
 
 		if (ImGui::Button("Play", ImVec2(150, 20)))
 		{
-			soundTrack.SoundTrack_Unpause();
+			soundTrack.Unpause();
 		}
 
 		if (ImGui::Button("Mute", ImVec2(150, 20)))
@@ -33,6 +33,7 @@ void EditorSyncTool::Sync_Tool()
 		}
 
 		ImGui::Separator();
+		ImGui::NewLine();
 
 		for (int i = 0; i < soundTrack.timeNeeded; i++)
 		{

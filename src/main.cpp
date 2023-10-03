@@ -15,7 +15,7 @@ using namespace Editor;
 
 int main(int argc, char** argv)
 {
-	HighLevel::SoundTrack::SoundTrack_Initialisation();
+	HighLevel::SoundTrack::Initialisation();
 
 	EditorWindow			editorWindow;
 	File					file;
@@ -34,7 +34,7 @@ int main(int argc, char** argv)
 	{
 		if (!filename.empty())
 		{
-			editorWindow.editorSyncTool.soundTrack.SoundTrack_PlayMusic(filename);
+			editorWindow.editorSyncTool.soundTrack.PlayMusic(filename);
 		}
 	}
 
@@ -46,10 +46,10 @@ int main(int argc, char** argv)
 		editorWindow.Editor_WindowSetUp(editor, renderer);
 		editorWindow.Editor_Rendering();
 
-		file.File_Update(renderer, window, 1);
+		file.Update(renderer, window, 1);
 
 
-	} while (window.Window_SwapBuffers());
+	} while (window.SwapBuffers());
 
 	return 0;
 }

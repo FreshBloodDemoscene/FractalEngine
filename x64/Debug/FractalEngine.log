@@ -1,2 +1,14 @@
-﻿  syncTracker.cpp
+﻿  editorIDE.cpp
+  editorSyncTool.cpp
+  editorWindow.cpp
+  file.cpp
+  main.cpp
+  renderer.cpp
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\renderer.cpp(51,18): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+  soundTrack.cpp
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\soundTrack.cpp(35,24): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+C:\Users\qriga\Documents\GitHub\FractalEngine\src\soundTrack.cpp(48,11): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+  textloader.cpp
+  window.cpp
+  Génération de code en cours...
   FractalEngine.vcxproj -> C:\Users\qriga\Documents\GitHub\FractalEngine\x64\Debug\FractalEngine.exe

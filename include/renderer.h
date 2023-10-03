@@ -35,10 +35,10 @@ namespace Graphics
 
 		std::vector<std::string>			fragmentPath;
 
-		void								Renderer_ReadAndCompileShader		();
-		static unsigned int					Renderer_CreateShader				(const std::string& vertexShader
+		void								ReadAndCompileShader				();
+		static unsigned int					CreateShader						(const std::string& vertexShader
 																				, const std::string& fragmentShader);
-		static unsigned int					Renderer_CompileShader				(unsigned int type, const std::string& source);
+		static unsigned int					CompileShader						(unsigned int type, const std::string& source);
 		void UpdateShader();
 
 		explicit							Renderer							(const Core::Window& window);

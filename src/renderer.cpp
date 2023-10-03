@@ -32,11 +32,11 @@ Renderer::Renderer(const Core::Window& window)
 	glVertexArrayAttribFormat(vao, 0, 2, GL_FLOAT, false, 0);
 	glVertexArrayElementBuffer(vao, EBO);
 
-	Renderer_ReadAndCompileShader();
-	m_shader = Renderer_CreateShader(m_vertexShader, m_fragmentShader);
+	ReadAndCompileShader();
+	m_shader = CreateShader(m_vertexShader, m_fragmentShader);
 	glUseProgram(m_shader);
 
-	glProgramUniform2f(m_shader, 0, float(window.Window_Size().x), float(window.Window_Size().y));
+	glProgramUniform2f(m_shader, 0, float(window.Size().x), float(window.Size().y));
 }
 
 Renderer::~Renderer() noexcept
@@ -59,12 +59,12 @@ void Renderer::Render()
 	glBindVertexArray(0);
 }
 
-unsigned int Renderer::Renderer_CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
+unsigned int Renderer::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
 {
 	unsigned int program = glCreateProgram();
 
-	unsigned int vs = Renderer_CompileShader(GL_VERTEX_SHADER, vertexShader);
-	unsigned int fs = Renderer_CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
+	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
+	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
 
 	glAttachShader(program, vs);
 	glAttachShader(program, fs);
@@ -77,7 +77,7 @@ unsigned int Renderer::Renderer_CreateShader(const std::string& vertexShader, co
 	return program;
 }
 
-unsigned int Renderer::Renderer_CompileShader(unsigned int type, const std::string& source)
+unsigned int Renderer::CompileShader(unsigned int type, const std::string& source)
 {
 	unsigned int id = glCreateShader(type);
 	const char* src = source.c_str();
@@ -103,7 +103,7 @@ unsigned int Renderer::Renderer_CompileShader(unsigned int type, const std::stri
 	return id;
 }
 
-void Renderer::Renderer_ReadAndCompileShader()
+void Renderer::ReadAndCompileShader()
 {
 	if (fragmentShaderPath.empty())
 	{
@@ -164,6 +164,6 @@ void Renderer::Renderer_ReadAndCompileShader()
 
 void Renderer::UpdateShader()
 {
-	m_shader = Renderer_CreateShader(m_vertexShader, m_fragmentShader);
+	m_shader = CreateShader(m_vertexShader, m_fragmentShader);
 	glUseProgram(m_shader);
 }

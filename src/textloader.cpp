@@ -5,7 +5,7 @@ using namespace Graphics;
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
-void textLoader::TextLoader_LoadImage(const char* image_path, int width, int height, int nrChannels, int req_comp)
+void TextLoader::LoadImage(const char* image_path, int width, int height, int nrChannels, int req_comp)
 {
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
@@ -23,7 +23,7 @@ void textLoader::TextLoader_LoadImage(const char* image_path, int width, int hei
     stbi_image_free(data);
 }
 
-void textLoader::TextLoader_Use(unsigned int unit)
+void TextLoader::Use(unsigned int unit)
 {
     glBindTextureUnit(unit, texture);
 }

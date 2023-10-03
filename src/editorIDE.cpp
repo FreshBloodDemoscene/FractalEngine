@@ -2,7 +2,7 @@
 
 using namespace Editor::IDE;
 
-void EditorIDE::IDE_Render(TextEditor& editor, Graphics::Renderer& renderer)
+void EditorIDE::Render(TextEditor& editor, Graphics::Renderer& renderer)
 {
 	static bool s_firstTimeSetUp = false;
 	if (!s_firstTimeSetUp)
@@ -24,37 +24,37 @@ void EditorIDE::IDE_Render(TextEditor& editor, Graphics::Renderer& renderer)
 	ImGui::End();
 }
 
-void EditorIDE::IDE_ShortCuts(TextEditor& editor, Graphics::Renderer& renderer)
+void EditorIDE::ShortCuts(TextEditor& editor, Graphics::Renderer& renderer)
 {
 	if (ImGui::IsKeyDown(ImGuiMod_Ctrl) && ImGui::IsKeyDown(ImGuiKey_S))
 	{
-		IDE_Save_File(editor, renderer);
+		Save_File(editor, renderer);
 	}
 	if (ImGui::IsKeyDown(ImGuiMod_Ctrl) && ImGui::IsKeyDown(ImGuiKey_O))
 	{
-		IDE_Open_File(editor, renderer);
+		Open_File(editor, renderer);
 	}
 	if (ImGui::IsKeyDown(ImGuiMod_Ctrl) && ImGui::IsKeyDown(ImGuiKey_D))
 	{
-		IDE_DockingWindow();
+		DockingWindow();
 	}
 }
 
-void EditorIDE::IDE_Open_File(TextEditor& editor, Graphics::Renderer& renderer)
+void EditorIDE::Open_File(TextEditor& editor, Graphics::Renderer& renderer)
 {
 	renderer.fragmentShaderPath = "";
-	renderer.Renderer_ReadAndCompileShader();
+	renderer.ReadAndCompileShader();
 	editor.SetText(renderer.m_fragmentShader);
 }
 
-void EditorIDE::IDE_Save_File(TextEditor& editor, Graphics::Renderer& renderer)
+void EditorIDE::Save_File(TextEditor& editor, Graphics::Renderer& renderer)
 {
 	std::ofstream file(renderer.fragmentShaderPath, std::ofstream::out);
 	file << editor.GetText();
 	file.close();
 }
 
-void EditorIDE::IDE_DockingWindow()
+void EditorIDE::DockingWindow()
 {
 	ImGuiIO& io = ImGui::GetIO();
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;

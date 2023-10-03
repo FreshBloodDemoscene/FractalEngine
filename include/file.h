@@ -31,8 +31,8 @@ namespace Core
         explicit File();
         ~File() noexcept;
 
-        void                            File_Update             (Graphics::Renderer& render, Window& window, float t);
-        void                            File_CheckModification  ();
+        void                            Update             (Graphics::Renderer& render, Window& window, float t);
+        void                            CheckModification  ();
     };
 }
 #endif  //__FRACTAL_ENGINE_FILE_H__

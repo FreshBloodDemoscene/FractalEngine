@@ -18,7 +18,7 @@ Window::Window(const glm::ivec2& size)
 {
 	if (!glfwInit())
 	{
-		Window_ErrorCallBack(1, "Window didn't openned properly.");
+		ErrorCallBack(1, "Window didn't openned properly.");
 		glfwTerminate();
 	}
 
@@ -38,7 +38,7 @@ Window::Window(const glm::ivec2& size)
 
 	if (!m_window)
 	{
-		Window_ErrorCallBack(2, "Window or OpenGL context creation failed.");
+		ErrorCallBack(2, "Window or OpenGL context creation failed.");
 		glfwTerminate();
 	}
 
@@ -48,7 +48,7 @@ Window::Window(const glm::ivec2& size)
 	glewExperimental = true;
 	if (glewInit() != GLEW_OK)
 	{
-		Window_ErrorCallBack(3, "Unable to initialize GLEW.");
+		ErrorCallBack(3, "Unable to initialize GLEW.");
 		glfwDestroyWindow(m_window);
 		glfwTerminate();
 	}
@@ -57,7 +57,7 @@ Window::Window(const glm::ivec2& size)
 		glViewport(0, 0, w, h);
 	});
 
-	glfwSetKeyCallback(m_window, Window_S_KeyCallback);
+	glfwSetKeyCallback(m_window, S_KeyCallback);
 }
 
 Window::~Window()
@@ -65,12 +65,12 @@ Window::~Window()
 	glfwDestroyWindow(m_window);
 }
 
-void Window::Window_ErrorCallBack(int error, const char* description)
+void Window::ErrorCallBack(int error, const char* description)
 {
 	std::cout << stderr << "Error : " << description << std::endl;
 }
 
-bool Window::Window_SwapBuffers()
+bool Window::SwapBuffers()
 {
 	glfwSwapBuffers(m_window);
 	glfwPollEvents();
@@ -78,16 +78,16 @@ bool Window::Window_SwapBuffers()
 	return !glfwWindowShouldClose(m_window);
 }
 
-void Window::Window_S_KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+void Window::S_KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
 
 	if (key == GLFW_KEY_F11 && action == GLFW_PRESS)
-		reinterpret_cast<Window*>(glfwGetWindowUserPointer(window))->Window_FullScreenMode(window);
+		reinterpret_cast<Window*>(glfwGetWindowUserPointer(window))->FullScreenMode(window);
 };
 
-void Window::Window_FullScreenMode(GLFWwindow* window)
+void Window::FullScreenMode(GLFWwindow* window)
 {
 	GLFWmonitor* temp_monitor;
 
@@ -107,7 +107,7 @@ void Window::Window_FullScreenMode(GLFWwindow* window)
 	}
 }
 
-glm::ivec2 Window::Window_Size() const
+glm::ivec2 Window::Size() const
 {
 	return m_size;
 }

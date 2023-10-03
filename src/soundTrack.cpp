@@ -4,13 +4,13 @@ using namespace HighLevel;
 
 sync_cb SoundTrack::s_syncLink =
 {
-	SoundTrack::SoundTrack_Ms_SetRow,
-	SoundTrack::SoundTrack_M_IsPlaying
+	SoundTrack::Ms_SetRow,
+	SoundTrack::M_IsPlaying
 };
 
 SoundTrack::SoundTrack(){}
 
-void SoundTrack::SoundTrack_Initialisation()
+void SoundTrack::Initialisation()
 {
 	BOOL b = BASS_Init(-1, 44100, BASS_DEVICE_STEREO, 0, NULL);
 	if (!b)
@@ -27,47 +27,47 @@ void SoundTrack::SoundTrack_Initialisation()
 
 SoundTrack::~SoundTrack(){}
 
-void SoundTrack::SoundTrack_PlayMusic(std::string musicPath)
+void SoundTrack::PlayMusic(std::string musicPath)
 {
 	std::string filePath(musicPath);
 	m_streamHandle = BASS_StreamCreateFile(false, filePath.data(), 0, 0, 0);
 	BASS_ChannelPlay(m_streamHandle, true);
-	timeNeeded = SoundTrack_Length() * m_rowRate;
+	timeNeeded = Length() * m_rowRate;
 }
 
-double SoundTrack::SoundTrack_CurrentRow() const
+double SoundTrack::CurrentRow() const
 {
 	QWORD pos = BASS_ChannelGetPosition(m_streamHandle, BASS_POS_BYTE);
 	double time = BASS_ChannelBytes2Seconds(m_streamHandle, pos);
 	return time * m_rowRate;
 }
 
-double SoundTrack::SoundTrack_Length() const
+double SoundTrack::Length() const
 {
 	QWORD len = BASS_ChannelGetLength(m_streamHandle, BASS_POS_BYTE);
 	int time = BASS_ChannelBytes2Seconds(m_streamHandle, len);
 	return time;
 }
 
-void SoundTrack::SoundTrack_Pause()
+void SoundTrack::Pause()
 {
 	BASS_ChannelPause(m_streamHandle);
 }
 
 
-void SoundTrack::SoundTrack_Unpause()
+void SoundTrack::Unpause()
 {
 	BASS_ChannelPlay(m_streamHandle, FALSE);
 }
 
-void SoundTrack::SoundTrack_Ms_SetRow(void* d, int row)
+void SoundTrack::Ms_SetRow(void* d, int row)
 {
 	SoundTrack* self = static_cast<SoundTrack*>(d);
 	QWORD pos = BASS_ChannelSeconds2Bytes(self->m_streamHandle, row / self->m_rowRate);
 	BASS_ChannelSetPosition(self->m_streamHandle, pos, BASS_POS_BYTE);
 }
 
-int SoundTrack::SoundTrack_M_IsPlaying(void* d)
+int SoundTrack::M_IsPlaying(void* d)
 {
 	SoundTrack* self = static_cast<SoundTrack*>(d);
 	return BASS_ChannelIsActive(self->m_streamHandle) == BASS_ACTIVE_PLAYING;

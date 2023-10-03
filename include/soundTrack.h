@@ -20,22 +20,22 @@ namespace HighLevel
 		explicit SoundTrack();
 		~SoundTrack() noexcept;
 
-		void						SoundTrack_PlayMusic	(std::string musicPath);
+		void						PlayMusic	(std::string musicPath);
 
-		static void					SoundTrack_Ms_SetRow	(void* d, int row);
-		static int					SoundTrack_M_IsPlaying	(void* d);
+		static void					Ms_SetRow	(void* d, int row);
+		static int					M_IsPlaying	(void* d);
 
 		HSTREAM						m_streamHandle = NULL;
 
-		void						SoundTrack_Pause			();
-		void						SoundTrack_Unpause			();
+		void						Pause			();
+		void						Unpause			();
 
 		static sync_cb				s_syncLink;
 		
-		static void					SoundTrack_Initialisation	();
+		static void					Initialisation	();
 
-		double						SoundTrack_CurrentRow   () const;
-		double						SoundTrack_Length		() const;
+		double						CurrentRow   () const;
+		double						Length		() const;
 		
 		void						SetTempo(float _tempo){tempo = _tempo;}
 		void						Mute(bool mute);

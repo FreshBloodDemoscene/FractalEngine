@@ -15,11 +15,11 @@ namespace Editor
 		class EditorIDE 
 		{
 		public:
-			void						IDE_Render(TextEditor& editor, Graphics::Renderer& renderer);
-			void						IDE_ShortCuts(TextEditor& editor, Graphics::Renderer& renderer);
-			void						IDE_Open_File(TextEditor& editor, Graphics::Renderer& renderer);
-			void						IDE_Save_File(TextEditor& editor, Graphics::Renderer& renderer);
-			void						IDE_DockingWindow();
+			void						Render(TextEditor& editor, Graphics::Renderer& renderer);
+			void						ShortCuts(TextEditor& editor, Graphics::Renderer& renderer);
+			void						Open_File(TextEditor& editor, Graphics::Renderer& renderer);
+			void						Save_File(TextEditor& editor, Graphics::Renderer& renderer);
+			void						DockingWindow();
 		};
 
 	}

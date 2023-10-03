@@ -8,7 +8,7 @@ File::File(){}
 
 File::~File() noexcept{}
 
-void File::File_CheckModification()
+void File::CheckModification()
 {	
 	auto check_fs_modification = std::filesystem::last_write_time(fragment_shader_path);
 
@@ -23,7 +23,7 @@ void File::File_CheckModification()
 	}
 }
 
-void File::File_Update(Graphics::Renderer& render, Window& window, float t)
+void File::Update(Graphics::Renderer& render, Window& window, float t)
 {
 	if (!render.fragmentShaderPath.empty())
 	{
@@ -41,13 +41,13 @@ void File::File_Update(Graphics::Renderer& render, Window& window, float t)
 		}
 	}
 
-	File_CheckModification();
+	CheckModification();
 	switch (status)
 	{
 	case E_FileStatus::modified:
 	{	
-		render.Renderer_ReadAndCompileShader();
-		glProgramUniform2f(render.m_shader, 0, float(window.Window_Size().x), float(window.Window_Size().y));
+		render.ReadAndCompileShader();
+		glProgramUniform2f(render.m_shader, 0, float(window.Size().x), float(window.Size().y));
 	}
 	break;
 	case E_FileStatus::nothingChanged:

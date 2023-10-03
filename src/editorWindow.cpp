@@ -43,9 +43,9 @@ void EditorWindow::Editor_Rendering()
 void EditorWindow::Editor_GUIsetUp(TextEditor& editor, Graphics::Renderer& renderer)
 {		
 	Editor_MainToolBar(editor, renderer);
-	editorIDE.IDE_Render(editor, renderer);
+	editorIDE.Render(editor, renderer);
 	editorSyncTool.Sync_Tool();
-	editorIDE.IDE_ShortCuts(editor, renderer);
+	editorIDE.ShortCuts(editor, renderer);
 }
 
 
@@ -66,11 +66,11 @@ void EditorWindow::Editor_MainToolBar(TextEditor& editor, Graphics::Renderer& re
 	{
 		if (ImGui::MenuItem("Open", "Ctrl-O"))
 		{
-			editorIDE.IDE_Open_File(editor, renderer);
+			editorIDE.Open_File(editor, renderer);
 		}
 		if (ImGui::MenuItem("Save", "Ctrl-S"))
 		{
-			editorIDE.IDE_Save_File(editor, renderer);
+			editorIDE.Save_File(editor, renderer);
 		}
 		if (ImGui::MenuItem("ClearConsole"))
 		{
@@ -78,7 +78,7 @@ void EditorWindow::Editor_MainToolBar(TextEditor& editor, Graphics::Renderer& re
 		}
 		if (ImGui::MenuItem("Docking", "Ctrl-D"))
 		{
-			editorIDE.IDE_DockingWindow();
+			editorIDE.DockingWindow();
 		}
 		ImGui::EndMenu();
 	}
