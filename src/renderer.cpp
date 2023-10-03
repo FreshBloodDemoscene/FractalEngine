@@ -33,7 +33,9 @@ Renderer::Renderer(const Core::Window& window)
 	glVertexArrayElementBuffer(vao, EBO);
 
 	ReadAndCompileShader();
-	m_shader = CreateShader(m_vertexShader, m_fragmentShader);
+	Shader* shd = CreateShader(m_vertexShader, m_fragmentShader);
+	if (shd)
+		m_shader = *shd;
 	glUseProgram(m_shader);
 
 	glProgramUniform2f(m_shader, 0, float(window.Size().x), float(window.Size().y));
@@ -59,7 +61,7 @@ void Renderer::Render()
 	glBindVertexArray(0);
 }
 
-unsigned int Renderer::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
+Shader* Renderer::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
 {
 	unsigned int program = glCreateProgram();
 
@@ -74,7 +76,7 @@ unsigned int Renderer::CreateShader(const std::string& vertexShader, const std::
 	glDeleteShader(vs);
 	glDeleteShader(fs);
 
-	return program;
+	return new Shader(program);
 }
 
 unsigned int Renderer::CompileShader(unsigned int type, const std::string& source)
@@ -164,6 +166,8 @@ void Renderer::ReadAndCompileShader()
 
 void Renderer::UpdateShader()
 {
-	m_shader = CreateShader(m_vertexShader, m_fragmentShader);
+	Shader* shd = CreateShader(m_vertexShader, m_fragmentShader);
+	if (shd)
+		m_shader = *shd;
 	glUseProgram(m_shader);
 }

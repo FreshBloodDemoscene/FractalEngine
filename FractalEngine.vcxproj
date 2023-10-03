@@ -147,6 +147,7 @@
     <ClCompile Include="src\imgui\TextEditor.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\renderer.cpp" />
+    <ClCompile Include="src\shader.cpp" />
     <ClCompile Include="src\soundTrack.cpp" />
     <ClCompile Include="src\syncTracker.cpp" />
     <ClCompile Include="src\textloader.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="include\imgui\imstb_truetype.h" />
     <ClInclude Include="include\imgui\TextEditor.h" />
     <ClInclude Include="include\renderer.h" />
+    <ClInclude Include="include\shader.h" />
     <ClInclude Include="include\soundTrack.h" />
     <ClInclude Include="include\syncTracker.h" />
     <ClInclude Include="include\textloader.h" />

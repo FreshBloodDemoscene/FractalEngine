@@ -8,6 +8,7 @@
 #include <sstream>
 #include <string>
 
+#include <shader.h>
 #include <window.h>
 
 #define GLEW_STATIC
@@ -36,7 +37,7 @@ namespace Graphics
 		std::vector<std::string>			fragmentPath;
 
 		void								ReadAndCompileShader				();
-		static unsigned int					CreateShader						(const std::string& vertexShader
+		static Shader*						CreateShader						(const std::string& vertexShader
 																				, const std::string& fragmentShader);
 		static unsigned int					CompileShader						(unsigned int type, const std::string& source);
 		void UpdateShader();
